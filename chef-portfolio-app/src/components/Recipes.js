@@ -3,11 +3,16 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import { getRecipes } from "../actions/recipeAction";
+import RecipeCard from "./RecipeCard";
 
-function Recipes() {
+function Recipes(props) {
   return (
     <>
       <h1>I'll be an array of recipes mapped over</h1>
+      {props.recipes.map(recipe => (
+        <RecipeCard key={id} name={recipe.name} species={recipe.species} />
+      ))}
     </>
   );
 }
@@ -19,4 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(Recipes);
+export default connect(mapStateToProps, { getRecipes })(Recipes);
