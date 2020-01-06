@@ -31,7 +31,7 @@ function SignInPage(props) {
         Sign Up (this will link off to the sign up component eventually
       </button>
       <button onClick={routeToHomepage}>Guest</button>
-      <Link>
+      <Link to="">
         Already have an account? Sign in already!(this will link off to the sign
         in component eventually)
       </Link>

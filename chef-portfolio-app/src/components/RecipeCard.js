@@ -7,6 +7,8 @@ function RecipeCard(props) {
     <div>
       <h2>{props.name}</h2>
       <h3>{props.species}</h3>
+      {/* <h3>{props.ingredients}</h3>
+      <h3>{props.instructions}</h3> */}
     </div>
   );
 }

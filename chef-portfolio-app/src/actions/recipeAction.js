@@ -48,7 +48,7 @@ export const getRecipes = () => dispatch => {
     .get("https://rickandmortyapi.com/api/character")
     .then(res => {
       console.log(res.data);
-      //dispatch({type: FETCH_RECIPES_SUCCESS, payload: res.data})
+      dispatch({ type: FETCH_RECIPES_SUCCESS, payload: res.data.results });
     })
     .catch(err => {
       dispatch({ type: FETCH_RECIPES_FAILURE, payload: err.res });
