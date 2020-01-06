@@ -10,7 +10,7 @@ function ChefProfile(props) {
   };
 
   const routeToGuestHomepage = () => {
-    props.history.push("/homepage");
+    props.history.push("/");
   };
 
   const routeToMeetChefs = () => {
