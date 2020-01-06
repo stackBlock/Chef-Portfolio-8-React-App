@@ -7,7 +7,8 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-
+import chefReducer from "./reducers/chefReducer";
+import recipeReducer from "./reducers/recipeReducer";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // const reducer = [reducer1, reducer2]
