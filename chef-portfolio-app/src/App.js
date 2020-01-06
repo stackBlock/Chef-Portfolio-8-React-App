@@ -12,7 +12,7 @@ import { Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Route exact path="/homepage" component={GuestHomepage} />
+      <Route exact path="/" component={GuestHomepage} />
       <Route exact path="/sign-in" component={SignInPage} />
       <Route exact path="/new-profile" component={NewProfile} />
       <Route exact path="/chef-profile/:id" component={ChefProfile} />

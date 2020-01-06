@@ -6,7 +6,7 @@ import Page from "../pages/Page";
 
 function MeetChefs(props) {
   const routeToGuestHomepage = () => {
-    props.history.push("/homepage");
+    props.history.push("/");
   };
 
   return (

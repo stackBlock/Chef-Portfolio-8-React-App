@@ -12,7 +12,7 @@ import Footer from "../universal/Footer";
 
 function SignInPage(props) {
   const routeToHomepage = () => {
-    props.history.push("/homepage");
+    props.history.push("/");
   };
 
   const routeToNewProfile = () => {
