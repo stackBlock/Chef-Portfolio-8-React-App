@@ -4,6 +4,8 @@
 
 import React from "react";
 import Page from "../pages/Page";
+import { connect } from "react-redux";
+import { postNewRecipe } from "../actions/index";
 
 function CreatePost(props) {
   //this is only for demonstration purposes- include axios post with this props.history.push
@@ -21,4 +23,11 @@ function CreatePost(props) {
   );
 }
 
-export default CreatePost;
+const mapStateToProps = state => {
+  return {
+    recipes: state.recipes,
+    error: state.error
+  };
+};
+
+export default connect(mapStateToProps, { postNewRecipe })(CreatePost);

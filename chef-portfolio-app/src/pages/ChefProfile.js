@@ -3,6 +3,8 @@
 
 import React from "react";
 import Page from "../pages/Page";
+import { connect } from "react-redux";
+import { updateChefProfile } from "../actions/index";
 
 function ChefProfile(props) {
   const routeToCreatePost = () => {
@@ -33,4 +35,11 @@ function ChefProfile(props) {
   );
 }
 
-export default ChefProfile;
+const mapStateToProps = state => {
+  return {
+    chefs: state.chefs,
+    updatingChef: state.updateChef
+  };
+};
+
+export default connect(mapStateToProps, { updateChefProfile })(ChefProfile);
