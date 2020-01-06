@@ -3,6 +3,8 @@
 //Chef Sign Up will pop open the Sign Up Modal
 // render "already have an account" link -- will open the Sign In Modal
 
+//decided that modals would be stretch
+
 import React from "react";
 import NavBar from "../universal/NavBar";
 import Header from "../components/Header";
