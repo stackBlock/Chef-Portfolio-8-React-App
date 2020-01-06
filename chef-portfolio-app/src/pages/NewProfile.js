@@ -1,5 +1,7 @@
 // new profile form goes here
 
+// don't think we need this component anymore
+
 import React from "react";
 import Page from "../pages/Page";
 
