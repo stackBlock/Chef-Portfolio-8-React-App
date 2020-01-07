@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import GuestHomepage from "./pages/GuestHomepage";
 import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 // import NewProfile from "./pages/NewProfile";
 import ChefProfile from "./pages/ChefProfile";
 import CreatePost from "./components/CreatePost";
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <Route exact path="/" component={GuestHomepage} />
       <Route exact path="/sign-in" component={SignInPage} />
+      <Route exact path="/sign-up" component={SignUpPage} />
       {/* <Route exact path="/new-profile" component={NewProfile} /> */}
       <Route exact path="/chef-profile/:id" component={ChefProfile} />
       <Route path="/create-post" component={CreatePost} />

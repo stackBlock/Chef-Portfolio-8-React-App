@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import {Formik, Form, Field} from 'formik';
-import * as Yup from 'yup';
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+
+///need to bring in state here
 
 const userSchema = Yup.object().shape({
   username: Yup.string()
@@ -13,43 +15,36 @@ const userSchema = Yup.object().shape({
 });
 
 function SignIn(props) {
-
-  const routeToNewProfile = () => {
-    props.history.push("/new-profile");
-  };
-
   return (
     <>
       <h1>Sign In</h1>
 
-
-      <Formik 
-          initialValues={{
-            username: "",
-            password: ""
-          }}
-          onSubmit={(values, tools) => {
-            tools.resetForm();
-          }}
-          validationSchema={userSchema}
-          render={props => {
-            return(
-              <Form className="formContainer">
-                <label>
-                  *Username:
-                  <Field 
-                    className="input inputName" 
-                    name="username" 
-                    type="text"
-                    placeholder="enter username"
-                  />
-                </label>
-                {props.errors.username && props.touched.username ? (
-                  <span className="red">{props.errors.username}</span>
-                ) : (
-                  ""
-                )}
-
+      <Formik
+        initialValues={{
+          username: "",
+          password: ""
+        }}
+        onSubmit={(values, tools) => {
+          tools.resetForm();
+        }}
+        validationSchema={userSchema}
+        render={props => {
+          return (
+            <Form className="formContainer">
+              <label>
+                *Username:
+                <Field
+                  className="input inputName"
+                  name="username"
+                  type="text"
+                  placeholder="enter username"
+                />
+              </label>
+              {props.errors.username && props.touched.username ? (
+                <span className="red">{props.errors.username}</span>
+              ) : (
+                ""
+              )}
 
               <label>
                 *Password:
@@ -67,20 +62,17 @@ function SignIn(props) {
               )}
 
               <input className="submitButton" type="submit" />
-
-              <button className="signUpSwitch">
-                Don't have an account? Sign up!
-              </button>
-
-              <Link to="/">
-                <button className="guestSignIn">
-                  Just wanna browse? Continue as a guest.
-                </button>
-              </Link>
             </Form>
           );
         }}
       />
+      <Link to="/sign-up" className="signUpSwitch">
+        Don't have an account? Sign up!
+      </Link>
+
+      <Link to="/" className="guestSignIn">
+        Just wanna browse? Continue as a guest.
+      </Link>
     </>
   );
 }
