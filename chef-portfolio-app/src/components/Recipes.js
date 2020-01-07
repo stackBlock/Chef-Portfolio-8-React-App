@@ -7,9 +7,11 @@ import { getRecipes } from "../actions/recipeAction";
 import RecipeCard from "./RecipeCard";
 
 function Recipes(props) {
+  console.log(props.recipes);
   return (
     <>
       <h1>I'll be an array of recipes mapped over</h1>
+      <button onClick={props.getRecipes}>Show Me Rick</button>
       {props.recipes.map(recipe => (
         <RecipeCard
           key={recipe.id}
@@ -23,7 +25,7 @@ function Recipes(props) {
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes,
+    recipes: state.recipes.recipes,
     error: state.error
   };
 };
