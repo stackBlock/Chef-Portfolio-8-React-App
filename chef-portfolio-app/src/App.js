@@ -8,6 +8,7 @@ import CreatePost from "./components/CreatePost";
 import MeetChefs from "./pages/MeetChefs";
 import RecipePage from "./pages/RecipePage";
 import { Route } from "react-router-dom";
+// import PrivateRoute from "./authentication/PrivateRoute";
 
 function App() {
   return (
