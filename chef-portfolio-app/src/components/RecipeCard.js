@@ -5,9 +5,13 @@
 import React from "react";
 
 function RecipeCard(props) {
+  const routeToRecipePage = () => {
+    props.history.push(`/recipe/${props.match.params.id}`);
+  };
+
   return (
-    <div>
-      <h2>{props.name}</h2>
+    <div onClick={routeToRecipePage}>
+      <h2>{props.title}</h2>
       <h3>{props.species}</h3>
       {/* <h3>{props.ingredients}</h3>
       <h3>{props.instructions}</h3> */}

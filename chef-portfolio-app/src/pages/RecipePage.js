@@ -5,36 +5,50 @@
 
 import React from "react";
 import Page from "../pages/Page";
+import RPAuthButtons from "../components/RPAuthButtons";
+import RPUnauthButtons from "../components/RPUnauthButtons";
 
 function RecipePage(props) {
-  const routeToCreatePost = () => {
-    props.history.push("/create-post");
-  };
-
-  const routeToGuestHomepage = () => {
-    props.history.push("/");
-  };
-
-  const routeToMeetChefs = () => {
-    props.history.push("/meet-the-chefs");
-  };
-
-  const routeToChefProfile = () => {
-    props.history.push("/chef-profile/:id");
-  };
+  const token = localStorage.getItem("token");
 
   return (
     <>
       <Page>
-        <h1>
-          I'm the Recipe Page. I'll have a picture, a list of ingredients and
-          instructions. I'll have two different views depending on user type.
-        </h1>
-        <button onClick={routeToCreatePost}>Create Post-AU</button>
-        <button onClick={routeToChefProfile}>View My Profile</button>
-        <h2>OR</h2>
-        <button onClick={routeToGuestHomepage}>Return to Recipes-GU</button>
-        <button onClick={routeToMeetChefs}>Return to Chefs-GU</button>
+        <h2>{props.title}</h2>
+        <div>
+          <img>{props.authorImg}</img>
+          <p>Chef {props.authorName}</p>
+        </div>
+        <img>{props.img}</img>
+        <div>
+          <h4>Let's Cook!</h4>
+          <p>Approximately {props.time} hours</p>
+        </div>
+        <div>
+          <div>
+            <h2>Ingredients</h2>
+            <p>{props.ingredients}</p>
+          </div>
+          <div>
+            <h2>Instructions</h2>
+            <p>{props.instructions}</p>
+          </div>
+        </div>
+        <div>
+          <h4>Recipe Media</h4>
+          <div>
+            <img />
+            <img />
+            <img />
+            <img />
+            <img />
+            <img />
+            <img />
+            <img />
+          </div>
+        </div>
+
+        <div>{token ? <RPAuthButtons /> : <RPUnauthButtons />}</div>
       </Page>
     </>
   );

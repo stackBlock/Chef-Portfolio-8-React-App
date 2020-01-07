@@ -14,7 +14,7 @@ function Recipes(props) {
       {props.recipes.map(recipe => (
         <RecipeCard
           key={recipe.id}
-          name={recipe.name}
+          title={recipe.name}
           species={recipe.species}
         />
       ))}
