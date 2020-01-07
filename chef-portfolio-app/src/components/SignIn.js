@@ -16,8 +16,6 @@ function SignIn(props) {
     props.history.push("/new-profile");
   };
 
-  const [users, setUsers] = useState([]);
-
   return (
     <>
       <h1>Sign In</h1>
@@ -29,18 +27,6 @@ function SignIn(props) {
           }}
           onSubmit={(values, tools) => {
             tools.resetForm();
-            axios.post('https://reqres.in/api/users', values)
-              .then(res => {
-                console.log('SUCCESSFUL', res)
-                console.log(res.data)
-
-                const userData = res.data;
-
-                setUsers([...users, userData]);
-              })
-              .catch(err => {
-                console.log('FAILURE: ', err)
-              })
           }}
           validationSchema={userSchema}
           render={props => {
