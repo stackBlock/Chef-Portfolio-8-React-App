@@ -47,7 +47,7 @@ export const getRecipes = () => dispatch => {
   axios
     .get("https://rickandmortyapi.com/api/character")
     .then(res => {
-      console.log(res.data);
+      console.log(res);
       //dispatch({type: FETCH_RECIPES_SUCCESS, payload: res.data})
     })
     .catch(err => {

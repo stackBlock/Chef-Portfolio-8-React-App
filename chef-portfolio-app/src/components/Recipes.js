@@ -11,7 +11,11 @@ function Recipes(props) {
     <>
       <h1>I'll be an array of recipes mapped over</h1>
       {props.recipes.map(recipe => (
-        <RecipeCard key={id} name={recipe.name} species={recipe.species} />
+        <RecipeCard
+          key={recipe.id}
+          name={recipe.name}
+          species={recipe.species}
+        />
       ))}
     </>
   );
