@@ -8,19 +8,19 @@
 import React from "react";
 import NavBar from "../universal/NavBar";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SearchBar from "../universal/SearchBar";
-import SignIn from '../components/SignIn'
+import SignIn from "../components/SignIn";
 import Footer from "../universal/Footer";
 
 function SignInPage(props) {
-  const routeToHomepage = () => {
-    props.history.push("/");
-  };
+  // const routeToHomepage = () => {
+  //   props.history.push("/");
+  // };
 
-  const routeToNewProfile = () => {
-    props.history.push("/new-profile");
-  };
+  // const routeToNewProfile = () => {
+  //   props.history.push("/new-profile");
+  // };
 
   return (
     <>
@@ -29,14 +29,14 @@ function SignInPage(props) {
       <SearchBar />
       <h1>I'm the Sign In Page</h1>
       <SignIn />
-      <button onClick={routeToNewProfile}>
+      {/* <button onClick={routeToNewProfile}>
         Sign Up (this will link off to the sign up component eventually
       </button>
       <button onClick={routeToHomepage}>Guest</button>
-      <Link to="">
+      <Link>
         Already have an account? Sign in already!(this will link off to the sign
         in component eventually)
-      </Link>
+      </Link> */}
       <Footer />
     </>
   );
