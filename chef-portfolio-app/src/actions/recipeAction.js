@@ -51,7 +51,8 @@ export const getRecipes = () => dispatch => {
       dispatch({ type: FETCH_RECIPES_SUCCESS, payload: res.data.results });
     })
     .catch(err => {
-      dispatch({ type: FETCH_RECIPES_FAILURE, payload: err.res });
+      console.log(err);
+      // dispatch({ type: FETCH_RECIPES_FAILURE, payload: err.res });
     });
 };
 
