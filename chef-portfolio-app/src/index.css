@@ -147,3 +147,111 @@ code {
 .footerLogo{
   font-size: 2rem;
 }
+
+
+
+
+/*Formik styling*/
+
+.formContainer{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  margin: 0 auto;
+  margin-bottom: 5vh;
+  padding: 2vh 5vw;
+
+  border: 2px solid #828080;
+  border-radius: 8px;
+
+  background: #1F1E1E;
+  
+  width: 225px;
+}
+
+.submitButton{
+  width: 100px;
+
+  margin-top: 5vh;
+  padding: .75vh 2vw;
+
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+
+  background: #07FE20;
+  color: black;
+
+  font-weight: 600;
+  font-family: helvetica;
+  font-size: 1.05rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitButton:active{
+  background: rgb(0, 94, 0);
+}
+
+.signUpSwitch{
+  border: none;
+
+  background: none;
+  color: #828080;
+
+  font-size: .8rem;
+
+  margin-top: 1vh;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+}
+
+.guestSignIn{
+  border: none;
+
+  background: none;
+  color: #828080;
+
+  font-size: .8rem;
+
+  margin-top: 1vh;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+}
+
+label{
+  margin-top: 3vh;
+  color: white;
+}
+
+.input{
+  padding: .75vh .75vw;
+
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+.red{
+  font-size: 0.85rem;
+
+  border: 1px solid rgb(151, 151, 151);
+  border-radius: 2px;
+
+  margin-top: .5vh;
+  padding: .25vh .5vw;
+
+  font-style: italic;
+
+  background-color: rgb(255, 241, 221);
+  color: red;
+  font-weight: 500;
+}
