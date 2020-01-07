@@ -2,22 +2,17 @@
 // use axios.post request on form submit
 // route back to chef profile page on submit
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import Page from "../pages/Page";
 import { connect } from "react-redux";
-import { postNewRecipe } from "../actions/index";
-import {Formik, Form, Field } from 'formik'
-import axios from 'axios';
-import * as Yup from 'yup'
+import { postNewRecipe, postNewChefProfile } from "../actions/index";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
 function CreatePost(props) {
   //this is only for demonstration purposes- include axios post with this props.history.push
-  const routeToChefProfile = () => {
-    props.history.push("/chef-profile/:id");
-  };
 
-  const [recipes, setRecipes] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
 
   const userSchema = Yup.object().shape({
     title: Yup.string().required(),
@@ -31,7 +26,7 @@ function CreatePost(props) {
       <Page>
         <h1>Create Post</h1>
 
-        <Formik 
+        <Formik
           initialValues={{
             title: "",
             time: "",
@@ -40,27 +35,28 @@ function CreatePost(props) {
           }}
           onSubmit={(values, tools) => {
             tools.resetForm();
+            props.postNewRecipe(values);
+            // axios
+            //   .post("https://reqres.in/api/users", values)
+            //   .then(res => {
+            //     console.log("SUCCESSFUL", res);
 
-            axios.post('https://reqres.in/api/users', values)
-              .then(res => {
-                console.log('SUCCESSFUL', res)
+            //     const recipeData = res.data;
 
-                const recipeData = res.data;
-
-                setRecipes([...recipes, recipeData])
-              })
-              .catch(err => {
-                console.log('FAILURE', err)
-              })
+            //     setRecipes([...recipes, recipeData]);
+            //   })
+            //   .catch(err => {
+            //     console.log("FAILURE", err);
+            //   });
           }}
           validationSchema={userSchema}
           render={props => {
-            return(
+            return (
               <Form className="formContainer">
                 <label>
-                  Title: 
-                  <Field  
-                    name="title" 
+                  Title:
+                  <Field
+                    name="title"
                     type="text"
                     placeholder="Squash and Feta Flatbread"
                   />
@@ -73,10 +69,10 @@ function CreatePost(props) {
 
                 <label>
                   Time to complete:
-                  <Field 
-                    name="time" 
+                  <Field
+                    name="time"
                     type="text"
-                    placeholder="Approximately 1 hour"  
+                    placeholder="Approximately 1 hour"
                   />
                 </label>
                 {props.errors.time && props.touched.time ? (
@@ -113,13 +109,11 @@ function CreatePost(props) {
                   ""
                 )}
 
-                <input className="submitButton" type="submit"/>
+                <input className="submitButton" type="submit" />
               </Form>
-            )
+            );
           }}
         />
-
-        <button onClick={routeToChefProfile}>Save</button>
       </Page>
     </>
   );
@@ -127,7 +121,6 @@ function CreatePost(props) {
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes,
     error: state.error
   };
 };
