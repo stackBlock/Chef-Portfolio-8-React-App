@@ -27,10 +27,12 @@ function SignIn(props) {
         }}
         onSubmit={(values, tools) => {
           tools.resetForm();
-          axiosWithAuth().then(res => {
-            localStorage.setItem("token", res.data.payload);
-            props.history.push(`/chef-profile/${props.match.params.id}`);
-          });
+          axiosWithAuth()
+            .post("./login", values)
+            .then(res => {
+              localStorage.setItem("token", res.data.payload);
+              props.history.push(`/chef-profile/${props.match.params.id}`);
+            });
         }}
         validationSchema={userSchema}
         render={props => {
