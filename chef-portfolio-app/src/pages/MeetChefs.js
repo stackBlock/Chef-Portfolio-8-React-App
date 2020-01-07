@@ -3,6 +3,7 @@
 
 import React from "react";
 import Page from "../pages/Page";
+import Chefs from "../components/Chefs";
 
 function MeetChefs(props) {
   const routeToGuestHomepage = () => {
@@ -12,7 +13,7 @@ function MeetChefs(props) {
   return (
     <>
       <Page>
-        <h1>I'll be a page of Chef profile cards when I'm all grown</h1>
+        <Chefs />
         <button onClick={routeToGuestHomepage}>Back to Recipes</button>
       </Page>
     </>

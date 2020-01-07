@@ -5,7 +5,7 @@
 import React from "react";
 import Page from "../pages/Page";
 import { connect } from "react-redux";
-import { postNewRecipe, postNewChefProfile } from "../actions/index";
+import { postNewRecipe } from "../actions/index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -36,6 +36,7 @@ function CreatePost(props) {
           onSubmit={(values, tools) => {
             tools.resetForm();
             props.postNewRecipe(values);
+            props.history.push(`/recipe/${props.match.params.id}`);
             // axios
             //   .post("https://reqres.in/api/users", values)
             //   .then(res => {

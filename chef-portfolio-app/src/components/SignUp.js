@@ -12,10 +12,10 @@ const userSchema = Yup.object().shape({
     .min(2),
   password: Yup.string()
     .required()
-    .min(3),
-  password: Yup.string()
-    .required()
     .min(3)
+  // password: Yup.string()
+  //   .required()
+  //   .min(3)
 });
 
 const SignUp = props => {
@@ -31,7 +31,7 @@ const SignUp = props => {
         }}
         onSubmit={(values, tools) => {
           tools.resetForm();
-          postNewChefProfile(values);
+          props.postNewChefProfile(values);
         }}
         validationSchema={userSchema}
         render={props => {

@@ -6,7 +6,8 @@ import ChefCard from "../components/ChefCard";
 const Chefs = props => {
   return (
     <div>
-      {props.chefs.map(chef => (
+      <h1>I'll have a list of all the chefs one day</h1>
+      {/* {props.chefs.map(chef => (
         <ChefCard
           key={chef.id}
           img={chef.img}
@@ -14,7 +15,7 @@ const Chefs = props => {
           location={chef.location}
           mission={chef.mission}
         />
-      ))}
+      ))} */}
     </div>
   );
 };
@@ -25,5 +26,5 @@ const mapStateToProps = state => {
     error: state.error
   };
 };
-console.log(chefs);
+// console.log(chefs);
 export default connect(mapStateToProps, {})(Chefs);
