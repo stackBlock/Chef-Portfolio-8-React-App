@@ -10,6 +10,7 @@ import NavBar from "../universal/NavBar";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import SearchBar from "../universal/SearchBar";
+import SignIn from '../components/SignIn'
 import Footer from "../universal/Footer";
 
 function SignInPage(props) {
@@ -27,6 +28,7 @@ function SignInPage(props) {
       <Header />
       <SearchBar />
       <h1>I'm the Sign In Page</h1>
+      <SignIn />
       <button onClick={routeToNewProfile}>
         Sign Up (this will link off to the sign up component eventually
       </button>

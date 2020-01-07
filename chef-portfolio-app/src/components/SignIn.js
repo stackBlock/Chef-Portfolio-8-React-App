@@ -1,12 +1,8 @@
 import React, {useState} from "react";
-import NavBar from "../universal/NavBar";
-import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import SearchBar from "../universal/SearchBar";
-import Footer from "../universal/Footer";
 
 
 
@@ -15,11 +11,7 @@ const userSchema = Yup.object().shape({
   password: Yup.string().required().min(3)
 });
 
-function SignInPage(props) {
-  const routeToHomepage = () => {
-    props.history.push("/");
-  };
-
+function SignIn(props) {
   const routeToNewProfile = () => {
     props.history.push("/new-profile");
   };
@@ -28,9 +20,6 @@ function SignInPage(props) {
 
   return (
     <>
-      <NavBar />
-      <Header />
-      <SearchBar />
       <h1>Sign In</h1>
 
       <Formik 
@@ -58,7 +47,7 @@ function SignInPage(props) {
             return(
               <Form className="formContainer">
                 <label>
-                  *Usernameame:
+                  *Username:
                   <Field 
                     className="input inputName" 
                     name="username" 
@@ -91,23 +80,13 @@ function SignInPage(props) {
 
                 <button className="signUpSwitch">Don't have an account? Sign up!</button>
 
-                <button className="guestSignIn" onClick={routeToHomepage}>Just wanna browse? Continue as a guest.</button>
+                <Link to="/"><button className="guestSignIn">Just wanna browse? Continue as a guest.</button></Link>
               </Form>
             )
           }}
         />
-      <h1>I'm the Sign In Page</h1>
-      <button onClick={routeToNewProfile}>
-        Sign Up (this will link off to the sign up component eventually
-      </button>
-      <button onClick={routeToHomepage}>Guest</button>
-      <Link to="">
-        Already have an account? Sign in already!(this will link off to the sign
-        in component eventually)
-      </Link>
-      <Footer />
     </>
   );
 }
 
-export default SignInPage;
+export default SignIn;
