@@ -55,3 +55,13 @@ function RecipePage(props) {
 }
 
 export default RecipePage;
+
+// key={recipe.id}
+// chefName={recipe.chef_name}
+// title={recipe.recipe_name}
+// photo={recipe.photo}
+// ingredients={recipe.recipe_ingredients}
+// cookTime={recipe.cook_time}
+// prepTime={recipe.prep_time}
+// instructions={recipe.instructions}
+// servings={recipe.servings}
