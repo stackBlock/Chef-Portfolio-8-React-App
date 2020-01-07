@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
+import {Formik, Form, Field} from 'formik';
+import * as Yup from 'yup';
 
 const userSchema = Yup.object().shape({
   username: Yup.string()
@@ -14,51 +13,43 @@ const userSchema = Yup.object().shape({
 });
 
 function SignIn(props) {
-  const [users, setUsers] = useState([]);
+
+  const routeToNewProfile = () => {
+    props.history.push("/new-profile");
+  };
 
   return (
     <>
       <h1>Sign In</h1>
 
-      <Formik
-        initialValues={{
-          username: "",
-          password: ""
-        }}
-        onSubmit={(values, tools) => {
-          tools.resetForm();
-          axios
-            .post("https://reqres.in/api/users", values)
-            .then(res => {
-              console.log("SUCCESSFUL", res);
-              console.log(res.data);
 
-              const userData = res.data;
+      <Formik 
+          initialValues={{
+            username: "",
+            password: ""
+          }}
+          onSubmit={(values, tools) => {
+            tools.resetForm();
+          }}
+          validationSchema={userSchema}
+          render={props => {
+            return(
+              <Form className="formContainer">
+                <label>
+                  *Username:
+                  <Field 
+                    className="input inputName" 
+                    name="username" 
+                    type="text"
+                    placeholder="enter username"
+                  />
+                </label>
+                {props.errors.username && props.touched.username ? (
+                  <span className="red">{props.errors.username}</span>
+                ) : (
+                  ""
+                )}
 
-              setUsers([...users, userData]);
-            })
-            .catch(err => {
-              console.log("FAILURE: ", err);
-            });
-        }}
-        validationSchema={userSchema}
-        render={props => {
-          return (
-            <Form className="formContainer">
-              <label>
-                *Username:
-                <Field
-                  className="input inputName"
-                  name="username"
-                  type="text"
-                  placeholder="enter username"
-                />
-              </label>
-              {props.errors.username && props.touched.username ? (
-                <span className="red">{props.errors.username}</span>
-              ) : (
-                ""
-              )}
 
               <label>
                 *Password:
