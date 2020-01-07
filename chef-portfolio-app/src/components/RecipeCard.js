@@ -1,5 +1,7 @@
 //renders a title card with image for a recipe
 
+// will need an onClick that directs users to the Recipe Page for that specific recipe
+
 import React from "react";
 
 function RecipeCard(props) {
