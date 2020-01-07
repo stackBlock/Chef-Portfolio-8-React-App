@@ -65,6 +65,11 @@ function CreatePost(props) {
                     placeholder="Squash and Feta Flatbread"
                   />
                 </label>
+                {props.errors.title && props.touched.title ? (
+                  <span className="red">{props.errors.title}</span>
+                ) : (
+                  ""
+                )}
 
                 <label>
                   Time to complete:
@@ -74,6 +79,11 @@ function CreatePost(props) {
                     placeholder="Approximately 1 hour"  
                   />
                 </label>
+                {props.errors.time && props.touched.time ? (
+                  <span className="red">{props.errors.time}</span>
+                ) : (
+                  ""
+                )}
 
                 <label>
                   Ingredients:
@@ -83,6 +93,11 @@ function CreatePost(props) {
                     placeholder="List of ingredients needed"
                   />
                 </label>
+                {props.errors.ingredients && props.touched.ingredients ? (
+                  <span className="red">{props.errors.ingredients}</span>
+                ) : (
+                  ""
+                )}
 
                 <label>
                   Instructions:
@@ -92,8 +107,13 @@ function CreatePost(props) {
                     placeholder="List of instructions"
                   />
                 </label>
+                {props.errors.instructions && props.touched.instructions ? (
+                  <span className="red">{props.errors.instructions}</span>
+                ) : (
+                  ""
+                )}
 
-                <input type="submit"/>
+                <input className="submitButton" type="submit"/>
               </Form>
             )
           }}
