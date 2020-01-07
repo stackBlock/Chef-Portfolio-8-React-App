@@ -1,12 +1,9 @@
-//thinking here... would we have an "edit profile" button that would toggle the edit fields on the chef profile page? I'm thinking back to our CodeSandbox Dragon List Reducer/Actions example.
-// Or do we need a specific component just for editing?
-
 import React from "react";
 import Page from "../pages/Page";
 import { connect } from "react-redux";
 import { updateChefProfile } from "../actions/index";
 
-function ChefProfile(props) {
+function AuthChefProfile(props) {
   const routeToCreatePost = () => {
     props.history.push("/create-post");
   };
@@ -42,4 +39,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { updateChefProfile })(ChefProfile);
+export default connect(mapStateToProps, { updateChefProfile })(AuthChefProfile);

@@ -3,11 +3,13 @@ import "./App.css";
 import GuestHomepage from "./pages/GuestHomepage";
 import SignInPage from "./pages/SignInPage";
 // import NewProfile from "./pages/NewProfile";
-import ChefProfile from "./pages/ChefProfile";
+import ChefProfile from "./ChefProfile/index";
+// import ChefProfile from "./pages/ChefProfileCommentedOut";
 import CreatePost from "./components/CreatePost";
 import MeetChefs from "./pages/MeetChefs";
 import RecipePage from "./pages/RecipePage";
 import { Route } from "react-router-dom";
+// import PrivateRoute from "./authentication/PrivateRoute";
 
 function App() {
   return (
