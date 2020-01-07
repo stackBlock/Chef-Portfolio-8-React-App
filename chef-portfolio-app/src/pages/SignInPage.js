@@ -136,7 +136,7 @@ function SignInPage(props) {
 
                 <input className="submitButton" type="submit"/>
 
-                <button className="signUpSwitch" onClick={routeToNewProfile}>Don't have an account? Sign up!</button>
+                <button className="signUpSwitch">Don't have an account? Sign up!</button>
 
                 <button className="guestSignIn" onClick={routeToHomepage}>Just wanna browse? Continue as a guest.</button>
               </Form>
