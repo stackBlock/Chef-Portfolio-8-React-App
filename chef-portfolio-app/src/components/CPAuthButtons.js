@@ -1,5 +1,7 @@
 import React from "react";
 
+//onClick for Edit Profile component
+
 function CPAuthButtons() {
   return (
     <div>

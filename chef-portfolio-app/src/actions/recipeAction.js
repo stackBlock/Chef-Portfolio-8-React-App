@@ -45,14 +45,14 @@ export const DELETE_A_RECIPE_FAILURE = "DELETE_A_RECIPE_FAILURE";
 export const getRecipes = () => dispatch => {
   dispatch({ type: FETCH_RECIPES_START });
   axios
-    .get("https://rickandmortyapi.com/api/character")
+    .get("https://chef-2.herokuapp.com/api/recipes/")
     .then(res => {
       console.log(res.data);
-      dispatch({ type: FETCH_RECIPES_SUCCESS, payload: res.data.results });
+      dispatch({ type: FETCH_RECIPES_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
-      // dispatch({ type: FETCH_RECIPES_FAILURE, payload: err.res });
+      dispatch({ type: FETCH_RECIPES_FAILURE, payload: err.res });
     });
 };
 
@@ -90,7 +90,7 @@ export const postNewRecipe = data => dispatch => {
 
   dispatch({ type: POST_NEW_RECIPE_START });
   axios
-    .post("URL", data)
+    .post("https://chef-2.herokuapp.com/api/recipes/post", data)
     .then(res => {
       console.log(res);
       // dispatch({ type: POST_NEW_RECIPE_SUCCESS, payload: res.data });

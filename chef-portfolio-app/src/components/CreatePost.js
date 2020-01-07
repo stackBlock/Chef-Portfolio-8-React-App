@@ -28,15 +28,19 @@ function CreatePost(props) {
 
         <Formik
           initialValues={{
-            title: "",
-            time: "",
-            ingredients: "",
-            instructions: ""
+            chef_name: "",
+            recipe_name: "",
+            recipe_photo: "",
+            recipe_ingredients: "",
+            cook_time: "",
+            prep_time: "",
+            instructions: "",
+            servings: ""
           }}
           onSubmit={(values, tools) => {
             tools.resetForm();
             props.postNewRecipe(values);
-            props.history.push(`/recipe/${props.match.params.id}`);
+            // props.history.push(`/recipe/${props.match.params.id}`);
             // axios
             //   .post("https://reqres.in/api/users", values)
             //   .then(res => {
