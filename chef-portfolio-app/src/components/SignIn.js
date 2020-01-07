@@ -1,16 +1,19 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 
-
-
 const userSchema = Yup.object().shape({
-  username: Yup.string().required().min(2),
-  password: Yup.string().required().min(3)
+  username: Yup.string()
+    .required()
+    .min(2),
+  password: Yup.string()
+    .required()
+    .min(3)
 });
 
 function SignIn(props) {
+
   const routeToNewProfile = () => {
     props.history.push("/new-profile");
   };
@@ -18,6 +21,7 @@ function SignIn(props) {
   return (
     <>
       <h1>Sign In</h1>
+
 
       <Formik 
           initialValues={{
@@ -46,30 +50,37 @@ function SignIn(props) {
                   ""
                 )}
 
-                <label>
-                  *Password:
-                  <Field 
-                    className="input inputPassword" 
-                    name="password" 
-                    type="text"
-                    placeholder="enter password"  
-                  />
-                </label>
-                {props.errors.password && props.touched.password ? (
-                  <span className="red">{props.errors.password}</span>
-                ) : (
-                  ""
-                )}
 
-                <input className="submitButton" type="submit"/>
+              <label>
+                *Password:
+                <Field
+                  className="input inputPassword"
+                  name="password"
+                  type="text"
+                  placeholder="enter password"
+                />
+              </label>
+              {props.errors.password && props.touched.password ? (
+                <span className="red">{props.errors.password}</span>
+              ) : (
+                ""
+              )}
 
-                <button className="signUpSwitch">Don't have an account? Sign up!</button>
+              <input className="submitButton" type="submit" />
 
-                <Link to="/"><button className="guestSignIn">Just wanna browse? Continue as a guest.</button></Link>
-              </Form>
-            )
-          }}
-        />
+              <button className="signUpSwitch">
+                Don't have an account? Sign up!
+              </button>
+
+              <Link to="/">
+                <button className="guestSignIn">
+                  Just wanna browse? Continue as a guest.
+                </button>
+              </Link>
+            </Form>
+          );
+        }}
+      />
     </>
   );
 }

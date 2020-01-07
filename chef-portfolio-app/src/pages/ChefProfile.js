@@ -1,35 +1,40 @@
-//thinking here... would we have an "edit profile" button that would toggle the edit fields on the chef profile page? I'm thinking back to our CodeSandbox Dragon List Reducer/Actions example.
-// Or do we need a specific component just for editing?
-
 import React from "react";
-import Page from "../pages/Page";
+import Page from "./Page";
 import { connect } from "react-redux";
 import { updateChefProfile } from "../actions/index";
+import RecipeCard from "../components/RecipeCard";
+import CPAuthButtons from "../components/CPAuthButtons";
+import CPUnauthButtons from "../components/CPUnauthButtons";
 
 function ChefProfile(props) {
-  const routeToCreatePost = () => {
-    props.history.push("/create-post");
-  };
-
-  const routeToGuestHomepage = () => {
-    props.history.push("/");
-  };
-
-  const routeToMeetChefs = () => {
-    props.history.push("/meet-the-chefs");
-  };
+  const token = localStorage.getItem("token");
+  // const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <>
       <Page>
-        <h1>
-          I'm a chef's personal profile. I'll have two different views, one for
-          an authorized user and one for guests.
-        </h1>
-        <button onClick={routeToCreatePost}>Create Post-AU</button>
-        <h2>OR</h2>
-        <button onClick={routeToGuestHomepage}>Return to Recipes-GU</button>
-        <button onClick={routeToMeetChefs}>Return to Chefs-GU</button>
+        <div>
+          <img>{props.chefs.profileImg}</img>
+          <h2>{props.chefs.name}</h2>
+          <p>{props.chefs.title}</p>
+          <p>{props.chefs.location}</p>
+        </div>
+        <div>
+          <h3>About:</h3>
+          <p>{props.chefs.about}</p>
+        </div>
+        <div>
+          {props.chefs.recipes.map(recipe => (
+            <RecipeCard
+              key={recipe.id}
+              img={recipe.img}
+              name={recipe.name}
+              ingredients={recipe.ingredients}
+              instructions={recipe.instructions}
+            />
+          ))}
+        </div>
+        <div>{token ? <CPAuthButtons /> : <CPUnauthButtons />}</div>
       </Page>
     </>
   );

@@ -11,7 +11,6 @@ function GuestHomepage(props) {
 
   return (
     <Page>
-      <h1>I am the guest homepage; you see a list of recipe cards on me</h1>
       <Recipes />
       <button onClick={routeToRecipePage}>
         Here's a pretend recipe card- click me to view the recipe component
