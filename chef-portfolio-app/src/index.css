@@ -11,3 +11,139 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+.navItems a, .footerNavItems a, .logoContainer a{
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*Underline animation for links within the nav and footer*/
+
+.navItems a::after, .footerNavItems a::after{
+  content: "";
+  display: block;
+  width: 0;
+  border-bottom: 1px solid #07FE20;
+  transition: .3s;
+}
+
+.navItems a:hover::after, .footerNavItems a:hover::after{
+  width: 100%;
+}
+
+
+/*===== Nav ====*/
+
+.green{
+  color: #07FE20;
+}
+
+.nav{
+  background: #1F1E1E;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1vh 2vw;
+}
+
+.buttonContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn{
+  margin-right: 2vw;
+  padding: 0.25rem 1rem;
+
+  background: #07FE20;
+  font-weight: 600;
+
+  cursor: pointer;
+  outline: none;
+
+  border: none;
+  border-radius: 5px;
+}
+
+.navItems{
+  display: flex;
+}
+
+.navItems a{
+  margin: 0 2vw;
+}
+
+.hamburger{
+  transform: rotate(90deg);
+  cursor: pointer;
+}
+
+.logo{
+  padding: 3vh 0;
+}
+
+
+
+
+/*===== Footer ======*/
+
+.footer{
+  background: #2F2D2D;
+  color: white;
+  margin-top: 0;
+  height: 65vh;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerNavItems a{
+  margin: 0 2vw;
+}
+
+.footerNavItems{
+  margin: 3vh 0;
+
+  display: flex;
+}
+
+.iconContainer{
+  display: flex;
+
+  margin-top: 10vh;
+}
+
+.iconContainer p{
+  margin: 0 1vw;
+
+  border: 1px solid white;
+  border-radius: 50%;
+  border-color: #828080;
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.copyrightContainer p{
+  color: #828080;
+  margin-top: 3vh;
+}
+
+.footerLogo{
+  font-size: 2rem;
+}
