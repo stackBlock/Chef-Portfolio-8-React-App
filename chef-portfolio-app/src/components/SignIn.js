@@ -1,4 +1,5 @@
 import React from "react";
+import { axiosWithAuth } from "../authentication/AxiosWithAuth";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -26,6 +27,10 @@ function SignIn(props) {
         }}
         onSubmit={(values, tools) => {
           tools.resetForm();
+          axiosWithAuth().then(res => {
+            localStorage.setItem("token", res.data.payload);
+            props.history.push(`/chef-profile/${props.match.params.id}`);
+          });
         }}
         validationSchema={userSchema}
         render={props => {
