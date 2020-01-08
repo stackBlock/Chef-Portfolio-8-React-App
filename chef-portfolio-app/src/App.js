@@ -9,6 +9,7 @@ import CreatePost from "./components/CreatePost";
 import MeetChefs from "./pages/MeetChefs";
 import RecipePage from "./pages/RecipePage";
 import { Route } from "react-router-dom";
+import RecipeEditForm from "./components/RecipeEditForm";
 // import PrivateRoute from "./authentication/PrivateRoute";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path="/create-post" component={CreatePost} />
       <Route path="/meet-the-chefs" component={MeetChefs} />
       <Route path="/recipe/:id" component={RecipePage} />
+      <Route path="/edit-recipe/:id" component={RecipeEditForm} />
     </div>
   );
 }
