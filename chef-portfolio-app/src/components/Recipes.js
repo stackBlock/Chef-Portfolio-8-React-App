@@ -86,7 +86,7 @@ function Recipes(props) {
               height={50}
               width={50}
             />
-            <p>Loading...</p>
+            <p>Nothing to display...</p>
           </div>
         :
           searchResults.map(recipe => {
