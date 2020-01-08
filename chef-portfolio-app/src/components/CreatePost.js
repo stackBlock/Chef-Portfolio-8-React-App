@@ -15,9 +15,8 @@ function CreatePost(props) {
   // const [recipes, setRecipes] = useState([]);
 
   const userSchema = Yup.object().shape({
-    title: Yup.string().required(),
-    time: Yup.string().required(),
-    ingredients: Yup.string().required(),
+    recipe_name: Yup.string().required(),
+    recipe_ingredients: Yup.string().required(),
     instructions: Yup.string().required()
   });
 
@@ -29,12 +28,12 @@ function CreatePost(props) {
         <Formik
           initialValues={{
             chef_name: "",
-            recipe_name: "",
+            recipe_name: "", //req
             recipe_photo: "",
-            recipe_ingredients: "",
+            recipe_ingredients: "", //req
             cook_time: "",
             prep_time: "",
-            instructions: "",
+            instructions: "", //req
             servings: ""
           }}
           onSubmit={(values, tools) => {
@@ -58,30 +57,26 @@ function CreatePost(props) {
           render={props => {
             return (
               <Form className="formContainer">
+
                 <label>
-                  Title:
+                  Your name:
                   <Field
-                    name="title"
+                    name="chef_name"
+                    type="text"
+                    placeholder="David Elofson"
+                  />
+                </label>
+
+                <label>
+                  Recipe name:
+                  <Field
+                    name="recipe_name"
                     type="text"
                     placeholder="Squash and Feta Flatbread"
                   />
                 </label>
-                {props.errors.title && props.touched.title ? (
-                  <span className="red">{props.errors.title}</span>
-                ) : (
-                  ""
-                )}
-
-                <label>
-                  Time to complete:
-                  <Field
-                    name="time"
-                    type="text"
-                    placeholder="Approximately 1 hour"
-                  />
-                </label>
-                {props.errors.time && props.touched.time ? (
-                  <span className="red">{props.errors.time}</span>
+                {props.errors.recipe_name && props.touched.recipe_name ? (
+                  <span className="red">{props.errors.recipe_name}</span>
                 ) : (
                   ""
                 )}
@@ -89,7 +84,7 @@ function CreatePost(props) {
                 <label>
                   Ingredients:
                   <Field
-                    name="ingredients"
+                    name="recipe_ingredients"
                     as="textarea"
                     placeholder="List of ingredients needed"
                   />
@@ -99,6 +94,24 @@ function CreatePost(props) {
                 ) : (
                   ""
                 )}
+
+                <label>
+                  Cook time:
+                  <Field
+                    name="cook_time"
+                    type="text"
+                    placeholder="35 minutes"
+                  />
+                </label>
+
+                <label>
+                  Prep time:
+                  <Field
+                    name="prep_time"
+                    type="text"
+                    placeholder="20 minutes"
+                  />
+                </label>
 
                 <label>
                   Instructions:
@@ -113,6 +126,23 @@ function CreatePost(props) {
                 ) : (
                   ""
                 )}
+
+                <label>
+                  Servings:
+                  <Field
+                    name="servings"
+                    type="text"
+                    placeholder="2"
+                  />
+                </label>
+
+                <label>
+                  Add a photo:
+                  <Field
+                    name="recipe_photo"
+                    type="file"
+                  />
+                </label>
 
                 <input className="submitButton" type="submit" />
               </Form>
