@@ -9,11 +9,12 @@ import React from "react";
 import NavBar from "../universal/NavBar";
 import Header from "../components/Header";
 // import { Link } from "react-router-dom";
-import SearchBar from "../universal/SearchBar";
+
 import SignIn from "../components/SignIn";
 import Footer from "../universal/Footer";
 
 function SignInPage(props) {
+  console.log(props);
   // const routeToHomepage = () => {
   //   props.history.push("/");
   // };
@@ -26,7 +27,7 @@ function SignInPage(props) {
     <>
       <NavBar />
       <Header />
-      <SignIn />
+      <SignIn history={props.history} match={props.match} />
       {/* <button onClick={routeToNewProfile}>
         Sign Up (this will link off to the sign up component eventually
       </button>

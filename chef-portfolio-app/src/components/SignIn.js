@@ -15,7 +15,7 @@ const userSchema = Yup.object().shape({
     .min(3)
 });
 
-function SignIn(props) {
+function SignIn({ history, match }) {
   return (
     <>
       <h1>Sign In</h1>
@@ -30,8 +30,10 @@ function SignIn(props) {
           axiosWithAuth()
             .post("/api/login/login", values)
             .then(res => {
+              console.log(res);
               localStorage.setItem("token", res.data.token);
-              props.history.push("/"); //this isn't working-- why???
+              localStorage.setItem("user", res.data.id);
+              history.push(`/chef-profile/${res.data.id}`);
             });
         }}
         validationSchema={userSchema}

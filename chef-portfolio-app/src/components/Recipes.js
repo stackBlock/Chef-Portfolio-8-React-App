@@ -14,16 +14,15 @@ function Recipes(props) {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    axios.get("https://chef-2.herokuapp.com/api/recipes/").then(res => {
+    axios.get("https://chef-2.herokuapp.com/api/recipes").then(res => {
       console.log(res);
       setRecipes(res.data);
     });
   }, []);
 
-
   //Search state and input field state
 
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState("");
   const [searchResults, setSearchResults] = useState(recipes);
 
   //loading state
@@ -31,6 +30,7 @@ function Recipes(props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+<<<<<<< HEAD
     setLoading(true);
 
     setTimeout(() => {
@@ -47,20 +47,29 @@ function Recipes(props) {
       )
       setLoading(false);
     }, 300)
+=======
+    setSearchResults(
+      recipes.filter(recipe => {
+        return recipe.recipe_name
+          .toLowerCase()
+          .includes(inputText.toLowerCase());
+      })
+    );
+>>>>>>> 7bfd17f1ab211c3216afcce4274bad8c5c75de4f
   }, [inputText, recipes]);
 
   const handleChange = e => {
     setInputText(e.target.value);
     console.log(inputText);
-  }
-
-  
+  };
 
   return (
     <>
       <div className="searchBar">
         <div className="searchFormDesc">
-          <p>EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!</p>
+          <p>
+            EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!
+          </p>
         </div>
 
         <form class="searchForm">
@@ -76,6 +85,7 @@ function Recipes(props) {
         </form>
       </div>
 
+<<<<<<< HEAD
       {
         loading || !searchResults.length
         ?
@@ -100,6 +110,18 @@ function Recipes(props) {
             )
           })
       }
+=======
+      {searchResults.map(recipe => {
+        return (
+          <RecipeCard
+            key={recipe.id}
+            chefName={recipe.chef_name}
+            title={recipe.recipe_name}
+            photo={recipe.recipe_photo}
+          />
+        );
+      })}
+>>>>>>> 7bfd17f1ab211c3216afcce4274bad8c5c75de4f
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
       {/* {recipes.map(recipe => (

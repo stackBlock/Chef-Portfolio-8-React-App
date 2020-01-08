@@ -60,10 +60,10 @@ export const getRecipes = () => dispatch => {
 export const getARecipe = id => dispatch => {
   dispatch({ type: FETCH_A_RECIPE_START });
   axios
-    .get(`https://chef-2.herokuapp.com/api/recipes/${id}`)
+    .get(`https://chef-2.herokuapp.com/api/recipes/recipeid/${id}`)
     .then(res => {
-      console.log(res.data);
-      //dispatch({type: FETCH_A_RECIPE_SUCCESS, payload: res.data})
+      console.log(res);
+      dispatch({ type: FETCH_A_RECIPE_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_A_RECIPE_FAILURE, payload: err.res });
@@ -76,7 +76,7 @@ export const getChefRecipes = userId => dispatch => {
   axios
     .get(`https://chef-2.herokuapp.com/api/recipes/user/${userId}`)
     .then(res => {
-      console.log(res.data);
+      console.log(res);
       //dispatch({type: FETCH_CHEF_RECIPES_SUCCESS, payload: res.data})
     })
     .catch(err => {
