@@ -1,12 +1,13 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   background: #1F1E1E;
+  letter-spacing: .75px;
   color: white;
 }
 
@@ -203,13 +204,15 @@ code {
 
 .signUpSwitch{
   border: none;
+  display: block;
 
   background: none;
   color: #828080;
 
   font-size: .8rem;
+  letter-spacing: .75px;
 
-  margin-top: 1vh;
+  margin-bottom: 2vh;
 
   cursor: pointer;
 
@@ -223,6 +226,7 @@ code {
   color: #828080;
 
   font-size: .8rem;
+  letter-spacing: .75px;
 
   margin-top: 1vh;
 
