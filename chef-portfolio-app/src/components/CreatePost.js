@@ -136,6 +136,14 @@ function CreatePost(props) {
                   />
                 </label>
 
+                <label>
+                  Add a photo:
+                  <Field
+                    name="recipe_photo"
+                    type="file"
+                  />
+                </label>
+
                 <input className="submitButton" type="submit" />
               </Form>
             );
