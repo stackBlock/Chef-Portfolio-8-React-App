@@ -31,7 +31,7 @@ export const DELETE_CHEF_PROFILE_FAILURE = "DELETE_CHEF_PROFILE_FAILURE";
 export const getChefs = () => dispatch => {
   dispatch({ type: FETCH_CHEFS_START });
   axios
-    .get("URL")
+    .get("https://chef-2.herokuapp.com/api/user/allusers")
     .then(res => {
       console.log(res.data);
       //dispatch({type: FETCH_CHEFS_SUCCESS, payload: res.data})
@@ -46,7 +46,7 @@ export const postNewChefProfile = data => dispatch => {
   //need to include what data to post
 
   dispatch({ type: POST_NEW_CHEF_START });
-  axios
+  axios //https://reqres.in/api/users/
     .post("https://chef-2.herokuapp.com/api/login/register", data)
     .then(res => {
       console.log(res);
