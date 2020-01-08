@@ -28,10 +28,10 @@ function SignIn(props) {
         onSubmit={(values, tools) => {
           tools.resetForm();
           axiosWithAuth()
-            .post("./login", values)
+            .post("/api/login/login", values)
             .then(res => {
-              localStorage.setItem("token", res.data.payload);
-              props.history.push(`/chef-profile/${props.match.params.id}`);
+              localStorage.setItem("token", res.data.token);
+              props.history.push("/"); //this isn't working-- why???
             });
         }}
         validationSchema={userSchema}

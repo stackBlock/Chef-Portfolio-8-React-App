@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
+// things that are required:
+// username, password, full_name, email, location
+// otherwise it will throw an error
+
 const userSchema = Yup.object().shape({
   username: Yup.string()
     .required()

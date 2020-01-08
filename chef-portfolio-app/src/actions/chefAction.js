@@ -47,7 +47,7 @@ export const postNewChefProfile = data => dispatch => {
 
   dispatch({ type: POST_NEW_CHEF_START });
   axios
-    .post("URL", data)
+    .post("https://chef-2.herokuapp.com/api/login/register", data)
     .then(res => {
       console.log(res);
       // dispatch({ type: POST_NEW_CHEF_SUCCESS, payload: res.data });
