@@ -4,12 +4,12 @@ import React from "react";
 
 function ChefCard(props) {
   return (
-    <div>
-      <img src={props.img} />
-      <h3>{props.name}</h3>
-      <p>{props.location}</p>
-      <p>{props.bio}</p>
-      <p>{props.email}</p>
+    <div className="chefCard">
+      <img className="chefImage" src={props.img} />
+      <h3 className="chefName">{props.name}</h3>
+      <p className="chefLocation">{props.location}</p>
+      <p className="chefBio">{props.bio}</p>
+      <p className="chefEmail">{props.email}</p>
     </div>
   );
 }

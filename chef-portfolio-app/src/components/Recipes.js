@@ -28,10 +28,10 @@ function Recipes(props) {
   useEffect(() => {
     setSearchResults(
       recipes.filter(recipe => {
-        inputText.includes(recipe.recipe_name);
+        return recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
       })
     )
-  }, [inputText]);
+  }, [inputText, recipes]);
 
   const handleChange = e => {
     setInputText(e.target.value);
@@ -63,13 +63,18 @@ function Recipes(props) {
       {
         searchResults.map(recipe => {
           return(
-            <p>{recipe.recipe_name}</p>
+            <RecipeCard
+              key={recipe.id}
+              chefName={recipe.chef_name}
+              title={recipe.recipe_name}
+              photo={recipe.recipe_photo}
+            />
           )
         })
       }
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
-      {recipes.map(recipe => (
+      {/* {recipes.map(recipe => (
         <RecipeCard
           key={recipe.id}
           chefName={recipe.chef_name}
@@ -81,7 +86,7 @@ function Recipes(props) {
           // instructions={recipe.instructions}
           // servings={recipe.servings}
         />
-      ))}
+      ))} */}
     </>
   );
 }

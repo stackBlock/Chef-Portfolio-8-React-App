@@ -6,20 +6,21 @@ import { getChefs } from "../actions/index";
 
 const Chefs = props => {
   return (
-    <div>
+    <>
       <button onClick={props.getChefs}>Show Me The Chefs!</button>
-
-      {props.chefs.map(chef => (
-        <ChefCard
-          key={chef.id}
-          img={chef.user_picture}
-          name={chef.full_name}
-          location={chef.location}
-          email={chef.email}
-          bio={chef.bio}
-        />
-      ))}
-    </div>
+      <div className="chefCardContainer">
+        {props.chefs.map(chef => (
+          <ChefCard
+            key={chef.id}
+            img={chef.user_picture}
+            name={chef.full_name}
+            location={chef.location}
+            email={chef.email}
+            bio={chef.bio}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

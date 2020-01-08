@@ -12,10 +12,14 @@ const userSchema = Yup.object().shape({
     .min(2),
   password: Yup.string()
     .required()
-    .min(3)
-  // password: Yup.string()
-  //   .required()
-  //   .min(3)
+    .min(3),
+  confirmPassword: Yup.string()
+    .required()
+    .min(3),
+  full_name: Yup.string()
+    .required(),
+  email: Yup.string()
+    .email()
 });
 
 const SignUp = props => {
@@ -27,7 +31,12 @@ const SignUp = props => {
         initialValues={{
           username: "",
           password: "",
-          confirmPassword: ""
+          confirmPassword: "",
+          full_name: "",
+          email: "",
+          phone: "",
+          Bio: "",
+          user_picture: ""
         }}
         onSubmit={(values, tools) => {
           tools.resetForm();
@@ -37,6 +46,9 @@ const SignUp = props => {
         render={props => {
           return (
             <Form className="formContainer">
+
+              {/* Required fields */}
+
               <label>
                 *Username:
                 <Field
@@ -81,6 +93,70 @@ const SignUp = props => {
               ) : (
                 ""
               )}
+
+              <label>
+                *Full name
+                <Field
+                className="input inputFullName"
+                  type="text"
+                  name="full_name"
+                  placeholder="Jon Snow"
+                />
+              </label>
+              {props.errors.full_name && props.touched.full_name ? (
+                <span className="red">{props.errors.full_name}</span>
+              ) : (
+                ""
+              )}
+
+              <label>
+                *Email
+                <Field
+                className="input inputEmail"
+                  type="text"
+                  name="email"
+                  placeholder="jon@winterfell.com"
+                />
+              </label>
+              {props.errors.email && props.touched.email ? (
+                <span className="red">{props.errors.email}</span>
+              ) : (
+                ""
+              )}
+
+              {/* Non required fields*/}
+
+              <label>
+                Phone Number
+                <Field
+                className="input inputPhoneNumber"
+                  type="text"
+                  name="phone"
+                  placeholder="808-555-1234"
+                />
+              </label>
+
+              <label>
+                Bio:
+                <br></br>
+                <Field
+                className="input inputBio"
+                  as="textarea"
+                  name="Bio"
+                  placeholder="About me"
+                />
+              </label>
+
+              <label>
+                Profile Image:
+                <br></br>
+                <Field
+                  className="input inputImage"
+                  type="file"
+                  name="user_picture"
+                  placeholder="About me"
+                />
+              </label>
 
               <input className="submitButton" type="submit" />
             </Form>

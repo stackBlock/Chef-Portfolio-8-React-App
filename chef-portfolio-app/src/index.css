@@ -160,6 +160,7 @@ code {
   display: flex;
   flex-flow: column;
   align-items: center;
+  justify-content: center;
 
   margin: 0 auto;
   margin-bottom: 5vh;
@@ -259,6 +260,11 @@ label{
   font-weight: 500;
 }
 
+.inputBio{
+  height: 100px;
+  width: 215px;
+}
+
 
 
 
@@ -306,4 +312,33 @@ label{
 
 .searchBar input::placeholder{
   color: #C4C4C4;
+}
+
+
+
+
+/*Chef Card*/
+
+.chefCardContainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.chefCard{
+  width: 300px;
+  height: 300px;
+
+  background: #2F2D2D;
+  
+  padding: 2vh 1vw;
+  margin: 2vh 2vw;
+}
+
+.chefImage{
+  width: 200px;
+
+  border-radius: 50%;
+  border: 5px solid #07FE20;
 }
