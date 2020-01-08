@@ -28,6 +28,7 @@ export const POST_NEW_CHEF_FAILURE = "POST_NEW_CHEF_FAILURE";
 // export const DELETE_CHEF_PROFILE_FAILURE = "DELETE_CHEF_PROFILE_FAILURE";
 
 //specific for all chefs
+
 export const getChefs = () => dispatch => {
   dispatch({ type: FETCH_CHEFS_START });
   axios

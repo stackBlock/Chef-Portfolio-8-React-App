@@ -12,9 +12,8 @@ export {
   // DELETE_CHEF_PROFILE_SUCCESS,
   // DELETE_CHEF_PROFILE_FAILURE,
   getChefs,
-  postNewChefProfile
-} from // updateChefProfile,
-// deleteChefProfile
+  postNewChefProfile // updateChefProfile,
+} from // deleteChefProfile
 "./chefAction";
 
 export {
