@@ -4,7 +4,10 @@ import {
   FETCH_CHEFS_FAILURE,
   POST_NEW_CHEF_START,
   POST_NEW_CHEF_SUCCESS,
-  POST_NEW_CHEF_FAILURE
+  POST_NEW_CHEF_FAILURE,
+  FETCH_A_CHEF_START,
+  FETCH_A_CHEF_SUCCESS,
+  FETCH_A_CHEF_FAILURE
   // UPDATE_CHEF_PROFILE_START,
   // UPDATE_CHEF_PROFILE_SUCCESS,
   // UPDATE_CHEF_PROFILE_FAILURE,
@@ -33,6 +36,21 @@ const chefReducer = (state = initialState, action) => {
         error: ""
       };
     case FETCH_CHEFS_FAILURE:
+      return {
+        ...state,
+        error: action.error //action.payload??
+      };
+    case FETCH_A_CHEF_START:
+      return {
+        ...state
+      };
+    case FETCH_A_CHEF_SUCCESS:
+      return {
+        ...state,
+        chefs: action.payload,
+        error: ""
+      };
+    case FETCH_A_CHEF_FAILURE:
       return {
         ...state,
         error: action.error //action.payload??

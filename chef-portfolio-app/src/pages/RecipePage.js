@@ -11,6 +11,8 @@ import RPAuthButtons from "../components/RPAuthButtons";
 import RPUnauthButtons from "../components/RPUnauthButtons";
 
 function RecipePage(props) {
+  console.log(props);
+
   useEffect(() => {
     props.getARecipe(props.match.params.id);
   }, []);
@@ -20,24 +22,23 @@ function RecipePage(props) {
   return (
     <>
       <Page>
-        <h2>{props.title}</h2>
+        <h2>{props.recipes.recipe_name}</h2>
         <div>
-          <img>{props.authorImg}</img>
-          <p>Chef {props.authorName}</p>
+          <p>Chef {props.recipes.chef_name}</p>
         </div>
-        <img>{props.img}</img>
+        <img src={props.recipes.recipe_photo}></img>
         <div>
           <h4>Let's Cook!</h4>
-          <p>Approximately {props.time} hours</p>
+          <p>Approximately {props.recipes.cook_time} hours</p>
         </div>
         <div>
           <div>
             <h2>Ingredients</h2>
-            <p>{props.ingredients}</p>
+            <p>{props.recipes.recipe_ingredients}</p>
           </div>
           <div>
             <h2>Instructions</h2>
-            <p>{props.instructions}</p>
+            <p>{props.recipes.instructions}</p>
           </div>
         </div>
         <div>
@@ -62,6 +63,7 @@ function RecipePage(props) {
 
 const mapStateToProps = state => {
   return {
+    recipes: state.recipes.recipes,
     error: state.error
   };
 };

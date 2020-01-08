@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ChefCard from "../components/ChefCard";
 import { getChefs } from "../actions/index";
-import { axiosWithAuth } from "../authentication/AxiosWithAuth";
 
 const Chefs = props => {
   useEffect(() => {
@@ -34,5 +33,5 @@ const mapStateToProps = state => {
     error: state.error
   };
 };
-// console.log(chefs);
+
 export default connect(mapStateToProps, { getChefs })(Chefs);

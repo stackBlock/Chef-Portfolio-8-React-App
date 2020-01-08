@@ -1,30 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Page from "./Page";
 import { connect } from "react-redux";
-import { getChefRecipes } from "../actions/index";
+import { getChefRecipes, getAChef } from "../actions/index";
 import RecipeCard from "../components/RecipeCard";
 import CPAuthButtons from "../components/CPAuthButtons";
 import CPUnauthButtons from "../components/CPUnauthButtons";
 
 function ChefProfile(props) {
   const token = localStorage.getItem("token");
-  // const user = JSON.parse(localStorage.getItem("user"));
+  const Id = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    props.getAChef(Id);
+  }, []);
 
   return (
     <>
       <Page>
         <div>
-          <img>{props.chefs.profileImg}</img>
-          <h2>{props.chefs.name}</h2>
-          <p>{props.chefs.title}</p>
+          {/* <img>{props.chefs.profileImg}</img> */}
+          <h2>{props.chefs.full_name}</h2>
+          <p>Master Chef</p>
           <p>{props.chefs.location}</p>
         </div>
         <div>
           <h3>About:</h3>
-          <p>{props.chefs.about}</p>
+          <p>{props.chefs.Bio}</p>
         </div>
         <div>
-          {props.chefs.recipes.map(recipe => (
+          {/* {props.chefs.recipes.map(recipe => (
             <RecipeCard
               key={recipe.id}
               img={recipe.img}
@@ -32,7 +36,7 @@ function ChefProfile(props) {
               ingredients={recipe.ingredients}
               instructions={recipe.instructions}
             />
-          ))}
+          ))} */}
         </div>
         <div>{token ? <CPAuthButtons /> : <CPUnauthButtons />}</div>
       </Page>
@@ -42,8 +46,10 @@ function ChefProfile(props) {
 
 const mapStateToProps = state => {
   return {
-    chefs: state.chefs
+    chefs: state.chefProfiles.chefs
   };
 };
 
-export default connect(mapStateToProps, { getChefRecipes })(ChefProfile);
+export default connect(mapStateToProps, { getChefRecipes, getAChef })(
+  ChefProfile
+);

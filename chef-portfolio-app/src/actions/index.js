@@ -5,6 +5,9 @@ export {
   POST_NEW_CHEF_START,
   POST_NEW_CHEF_SUCCESS,
   POST_NEW_CHEF_FAILURE,
+  FETCH_A_CHEF_START,
+  FETCH_A_CHEF_SUCCESS,
+  FETCH_A_CHEF_FAILURE,
   // UPDATE_CHEF_PROFILE_START,
   // UPDATE_CHEF_PROFILE_SUCCESS,
   // UPDATE_CHEF_PROFILE_FAILURE,
@@ -12,9 +15,9 @@ export {
   // DELETE_CHEF_PROFILE_SUCCESS,
   // DELETE_CHEF_PROFILE_FAILURE,
   getChefs,
-  postNewChefProfile // updateChefProfile,
-} from // deleteChefProfile
-"./chefAction";
+  postNewChefProfile,
+  getAChef // deleteChefProfile // updateChefProfile,
+} from "./chefAction";
 
 export {
   FETCH_RECIPES_START,
