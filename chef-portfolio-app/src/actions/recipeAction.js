@@ -57,10 +57,10 @@ export const getRecipes = () => dispatch => {
 };
 
 //specific for just one recipe
-export const getARecipe = () => dispatch => {
+export const getARecipe = id => dispatch => {
   dispatch({ type: FETCH_A_RECIPE_START });
   axios
-    .get("URL")
+    .get(`https://chef-2.herokuapp.com/api/recipes/${id}`)
     .then(res => {
       console.log(res.data);
       //dispatch({type: FETCH_A_RECIPE_SUCCESS, payload: res.data})
@@ -71,10 +71,10 @@ export const getARecipe = () => dispatch => {
 };
 
 //specific for one chef's set of recipes
-export const getChefRecipes = () => dispatch => {
+export const getChefRecipes = userId => dispatch => {
   dispatch({ type: FETCH_CHEF_RECIPES_START });
   axios
-    .get("URL")
+    .get(`https://chef-2.herokuapp.com/api/recipes/user/${userId}`)
     .then(res => {
       console.log(res.data);
       //dispatch({type: FETCH_CHEF_RECIPES_SUCCESS, payload: res.data})
@@ -106,7 +106,7 @@ export const updateRecipe = (data, id) => dispatch => {
 
   dispatch({ type: UPDATE_A_RECIPE_START });
   axios
-    .put(`URL/${id}`, data)
+    .put(`https://chef-2.herokuapp.com/api/recipes/update/${id}`, data)
     .then(res => {
       console.log(res);
       // dispatch({ type: UPDATE_A_RECIPE_SUCCESS, payload: res.data });
@@ -122,7 +122,7 @@ export const deleteRecipe = id => dispatch => {
 
   dispatch({ type: DELETE_A_RECIPE_START });
   axios
-    .delete(`URL/${id}`)
+    .delete(`https://chef-2.herokuapp.com/api/recipes/delete/${id}`)
     .then(res => {
       console.log(res);
       // dispatch({ type: DELETE_A_RECIPE_SUCCESS, payload: res.data });

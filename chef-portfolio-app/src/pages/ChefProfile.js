@@ -1,7 +1,7 @@
 import React from "react";
 import Page from "./Page";
 import { connect } from "react-redux";
-import { updateChefProfile } from "../actions/index";
+import { getChefRecipes } from "../actions/index";
 import RecipeCard from "../components/RecipeCard";
 import CPAuthButtons from "../components/CPAuthButtons";
 import CPUnauthButtons from "../components/CPUnauthButtons";
@@ -42,9 +42,8 @@ function ChefProfile(props) {
 
 const mapStateToProps = state => {
   return {
-    chefs: state.chefs,
-    updatingChef: state.updateChef
+    chefs: state.chefs
   };
 };
 
-export default connect(mapStateToProps, { updateChefProfile })(ChefProfile);
+export default connect(mapStateToProps, { getChefRecipes })(ChefProfile);
