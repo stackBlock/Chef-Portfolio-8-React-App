@@ -3,12 +3,18 @@
 // guest user: buttons to go back to Guest Homepage (recipes) or to Meet The Chefs
 // chef user: buttons to Create New Post or view My Profile
 
-import React from "react";
+import React, { useEffect } from "react";
 import Page from "../pages/Page";
+import { connect } from "react-redux";
+import { getARecipe } from "../actions/index";
 import RPAuthButtons from "../components/RPAuthButtons";
 import RPUnauthButtons from "../components/RPUnauthButtons";
 
 function RecipePage(props) {
+  useEffect(() => {
+    props.getARecipe(props.match.params.id);
+  }, []);
+
   const token = localStorage.getItem("token");
 
   return (
@@ -54,7 +60,13 @@ function RecipePage(props) {
   );
 }
 
-export default RecipePage;
+const mapStateToProps = state => {
+  return {
+    error: state.error
+  };
+};
+
+export default connect(mapStateToProps, { getARecipe })(RecipePage);
 
 // key={recipe.id}
 // chefName={recipe.chef_name}
