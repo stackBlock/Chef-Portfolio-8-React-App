@@ -13,38 +13,39 @@ function Recipes(props) {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    axios.get("https://chef-2.herokuapp.com/api/recipes/").then(res => {
+    axios.get("https://chef-2.herokuapp.com/api/recipes").then(res => {
       console.log(res);
       setRecipes(res.data);
     });
   }, []);
 
-
   //Search state and input field state
 
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState("");
   const [searchResults, setSearchResults] = useState(recipes);
 
   useEffect(() => {
     setSearchResults(
       recipes.filter(recipe => {
-        return recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
+        return recipe.recipe_name
+          .toLowerCase()
+          .includes(inputText.toLowerCase());
       })
-    )
+    );
   }, [inputText, recipes]);
 
   const handleChange = e => {
     setInputText(e.target.value);
     console.log(inputText);
-  }
-
-  
+  };
 
   return (
     <>
       <div className="searchBar">
         <div className="searchFormDesc">
-          <p>EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!</p>
+          <p>
+            EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!
+          </p>
         </div>
 
         <form class="searchForm">
@@ -60,18 +61,16 @@ function Recipes(props) {
         </form>
       </div>
 
-      {
-        searchResults.map(recipe => {
-          return(
-            <RecipeCard
-              key={recipe.id}
-              chefName={recipe.chef_name}
-              title={recipe.recipe_name}
-              photo={recipe.recipe_photo}
-            />
-          )
-        })
-      }
+      {searchResults.map(recipe => {
+        return (
+          <RecipeCard
+            key={recipe.id}
+            chefName={recipe.chef_name}
+            title={recipe.recipe_name}
+            photo={recipe.recipe_photo}
+          />
+        );
+      })}
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
       {/* {recipes.map(recipe => (

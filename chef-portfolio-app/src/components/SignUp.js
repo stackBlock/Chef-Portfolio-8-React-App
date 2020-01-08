@@ -16,10 +16,8 @@ const userSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .required()
     .min(3),
-  full_name: Yup.string()
-    .required(),
-  email: Yup.string()
-    .email()
+  full_name: Yup.string().required(),
+  email: Yup.string().email()
 });
 
 const SignUp = props => {
@@ -35,7 +33,7 @@ const SignUp = props => {
           full_name: "",
           email: "",
           phone: "",
-          Bio: "",
+          bio: "",
           user_picture: ""
         }}
         onSubmit={(values, tools) => {
@@ -46,7 +44,6 @@ const SignUp = props => {
         render={props => {
           return (
             <Form className="formContainer">
-
               {/* Required fields */}
 
               <label>
@@ -97,7 +94,7 @@ const SignUp = props => {
               <label>
                 *Full name
                 <Field
-                className="input inputFullName"
+                  className="input inputFullName"
                   type="text"
                   name="full_name"
                   placeholder="Jon Snow"
@@ -112,7 +109,7 @@ const SignUp = props => {
               <label>
                 *Email
                 <Field
-                className="input inputEmail"
+                  className="input inputEmail"
                   type="text"
                   name="email"
                   placeholder="jon@winterfell.com"
@@ -129,7 +126,7 @@ const SignUp = props => {
               <label>
                 Phone Number
                 <Field
-                className="input inputPhoneNumber"
+                  className="input inputPhoneNumber"
                   type="text"
                   name="phone"
                   placeholder="808-555-1234"
@@ -140,9 +137,9 @@ const SignUp = props => {
                 Bio:
                 <br></br>
                 <Field
-                className="input inputBio"
+                  className="input inputBio"
                   as="textarea"
-                  name="Bio"
+                  name="bio"
                   placeholder="About me"
                 />
               </label>
@@ -152,7 +149,7 @@ const SignUp = props => {
                 <br></br>
                 <Field
                   className="input inputImage"
-                  type="file"
+                  type="text"
                   name="user_picture"
                   placeholder="About me"
                 />
