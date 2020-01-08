@@ -26,6 +26,10 @@ function NavBar() {
         <Link to="/sign-in">
           <button className="signIn">Sign In</button>
         </Link>
+
+        <Link to="/sign-up">
+          <button className="signIn">Join Now</button>
+        </Link>
         <p className="hamburger">|||</p>
       </div>
     </nav>
