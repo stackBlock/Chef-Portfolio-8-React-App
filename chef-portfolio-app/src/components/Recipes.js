@@ -19,10 +19,62 @@ function Recipes(props) {
     });
   }, []);
 
+
+  //Search state and input field state
+
+  const [inputText, setInputText] = useState('');
+  const [searchResults, setSearchResults] = useState(recipes);
+
+  useEffect(() => {
+    setSearchResults(
+      recipes.filter(recipe => {
+        return recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
+      })
+    )
+  }, [inputText, recipes]);
+
+  const handleChange = e => {
+    setInputText(e.target.value);
+    console.log(inputText);
+  }
+
+  
+
   return (
     <>
+      <div className="searchBar">
+        <div className="searchFormDesc">
+          <p>EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!</p>
+        </div>
+
+        <form class="searchForm">
+          <label>
+            <input
+              type="text"
+              value={inputText}
+              onChange={handleChange}
+              name="search"
+              placeholder="Search"
+            />
+          </label>
+        </form>
+      </div>
+
+      {
+        searchResults.map(recipe => {
+          return(
+            <RecipeCard
+              key={recipe.id}
+              chefName={recipe.chef_name}
+              title={recipe.recipe_name}
+              photo={recipe.recipe_photo}
+            />
+          )
+        })
+      }
+
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
-      {recipes.map(recipe => (
+      {/* {recipes.map(recipe => (
         <RecipeCard
           key={recipe.id}
           chefName={recipe.chef_name}
@@ -34,7 +86,7 @@ function Recipes(props) {
           // instructions={recipe.instructions}
           // servings={recipe.servings}
         />
-      ))}
+      ))} */}
     </>
   );
 }
