@@ -255,3 +255,47 @@ label{
   color: red;
   font-weight: 500;
 }
+
+
+
+
+/*Search Bar*/
+
+.searchBar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #2F2D2D;
+  color: white;
+  
+  padding: 0 1vw;
+}
+
+.searchFormDesc{
+  width: 40%;
+}
+
+.searchForm{
+  width: 55%;
+}
+
+.searchBar p{
+  font-size: .85rem;
+  font-style: italic;
+}
+
+.searchBar input{
+  width: 95%;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: .5vh .75vw;
+
+  background: rgb(95, 91, 91);
+}
+
+.searchBar input::placeholder{
+  color: #C4C4C4;
+}
