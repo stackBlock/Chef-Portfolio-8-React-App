@@ -264,6 +264,10 @@ label{
 
 /*Search Bar*/
 
+.searchBarTwo{
+  display: none;
+}
+
 .searchBar{
   display: flex;
   justify-content: space-between;

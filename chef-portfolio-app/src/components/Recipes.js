@@ -21,6 +21,25 @@ function Recipes(props) {
 
   return (
     <>
+      <>
+        <div className="searchBar">
+          <div className="searchFormDesc">
+            <p>EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!</p>
+          </div>
+
+          <form class="searchForm">
+            <label>
+              <input
+                type="text"
+                name="search"
+                placeholder="Search"
+              />
+            </label>
+          </form>
+        </div>
+      </>
+
+
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
       {recipes.map(recipe => (
         <RecipeCard
