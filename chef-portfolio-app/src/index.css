@@ -52,7 +52,7 @@ code {
   justify-content: space-between;
   align-items: center;
 
-  padding: 1vh 2vw;
+  padding: .5vh 2vw;
 }
 
 .buttonContainer{
@@ -89,7 +89,7 @@ code {
 }
 
 .logo{
-  padding: 3vh 0;
+  padding: 1.5vh 0;
 }
 
 
@@ -100,7 +100,7 @@ code {
 .footer{
   background: #2F2D2D;
   color: white;
-  margin-top: 0;
+  margin-top: 7vh;
   height: 65vh;
 
   display: flex;
@@ -283,6 +283,7 @@ label{
   color: white;
   
   padding: 0 1vw;
+  margin-bottom: 7vh;
 }
 
 .searchFormDesc{

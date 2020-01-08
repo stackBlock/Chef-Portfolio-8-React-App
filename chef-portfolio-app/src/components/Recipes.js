@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { getRecipes } from "../actions/recipeAction";
 import RecipeCard from "./RecipeCard";
 import axios from "axios";
+import Loader from 'react-loader-spinner';
 
 function Recipes(props) {
   console.log(props.recipes);
@@ -24,13 +25,25 @@ function Recipes(props) {
 
   const [inputText, setInputText] = useState('');
   const [searchResults, setSearchResults] = useState(recipes);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setSearchResults(
-      recipes.filter(recipe => {
-        return recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
-      })
-    )
+    setLoading(true);
+
+    setTimeout(() => {
+      setSearchResults(
+        recipes.filter(recipe => {
+          // return recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
+          if(
+            recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
+            || recipe.chef_name.toLowerCase().includes(inputText.toLowerCase())
+          ){
+            return recipe;
+          }
+        })
+      )
+      setLoading(false);
+    }, 300)
   }, [inputText, recipes]);
 
   const handleChange = e => {
@@ -61,16 +74,25 @@ function Recipes(props) {
       </div>
 
       {
-        searchResults.map(recipe => {
-          return(
-            <RecipeCard
-              key={recipe.id}
-              chefName={recipe.chef_name}
-              title={recipe.recipe_name}
-              photo={recipe.recipe_photo}
-            />
-          )
-        })
+        loading || !searchResults.length
+        ?
+          <Loader
+            type="TailSpin"
+            color="#07FE20"
+            height={50}
+            width={50}
+          />
+        :
+          searchResults.map(recipe => {
+            return(
+              <RecipeCard
+                key={recipe.id}
+                chefName={recipe.chef_name}
+                title={recipe.recipe_name}
+                photo={recipe.recipe_photo}
+              />
+            )
+          })
       }
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
