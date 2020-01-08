@@ -5,10 +5,11 @@ import React from "react";
 function ChefCard(props) {
   return (
     <div>
-      <img>{props.img}</img>
+      <img src={props.img} />
       <h3>{props.name}</h3>
       <p>{props.location}</p>
       <p>{props.bio}</p>
+      <p>{props.email}</p>
     </div>
   );
 }
