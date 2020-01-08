@@ -25,6 +25,9 @@ function Recipes(props) {
 
   const [inputText, setInputText] = useState('');
   const [searchResults, setSearchResults] = useState(recipes);
+
+  //loading state
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -76,12 +79,15 @@ function Recipes(props) {
       {
         loading || !searchResults.length
         ?
-          <Loader
-            type="TailSpin"
-            color="#07FE20"
-            height={50}
-            width={50}
-          />
+          <div>
+            <Loader
+              type="TailSpin"
+              color="#07FE20"
+              height={50}
+              width={50}
+            />
+            <p>Loading...</p>
+          </div>
         :
           searchResults.map(recipe => {
             return(
