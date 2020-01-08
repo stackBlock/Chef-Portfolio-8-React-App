@@ -19,26 +19,54 @@ function Recipes(props) {
     });
   }, []);
 
+
+  //Search state and input field state
+
+  const [inputText, setInputText] = useState('');
+  const [searchResults, setSearchResults] = useState(recipes);
+
+  useEffect(() => {
+    setSearchResults(
+      recipes.filter(recipe => {
+        inputText.includes(recipe.recipe_name);
+      })
+    )
+  }, [inputText]);
+
+  const handleChange = e => {
+    setInputText(e.target.value);
+    console.log(inputText);
+  }
+
+  
+
   return (
     <>
-      <>
-        <div className="searchBar">
-          <div className="searchFormDesc">
-            <p>EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!</p>
-          </div>
-
-          <form class="searchForm">
-            <label>
-              <input
-                type="text"
-                name="search"
-                placeholder="Search"
-              />
-            </label>
-          </form>
+      <div className="searchBar">
+        <div className="searchFormDesc">
+          <p>EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!</p>
         </div>
-      </>
 
+        <form class="searchForm">
+          <label>
+            <input
+              type="text"
+              value={inputText}
+              onChange={handleChange}
+              name="search"
+              placeholder="Search"
+            />
+          </label>
+        </form>
+      </div>
+
+      {
+        searchResults.map(recipe => {
+          return(
+            <p>{recipe.recipe_name}</p>
+          )
+        })
+      }
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
       {recipes.map(recipe => (
