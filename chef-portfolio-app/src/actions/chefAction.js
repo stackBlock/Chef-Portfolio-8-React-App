@@ -33,8 +33,8 @@ export const getChefs = () => dispatch => {
   axios
     .get("https://chef-2.herokuapp.com/api/user/allusers")
     .then(res => {
-      console.log(res.data);
-      //dispatch({type: FETCH_CHEFS_SUCCESS, payload: res.data})
+      console.log(res);
+      dispatch({ type: FETCH_CHEFS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_CHEFS_FAILURE, payload: err.res });
