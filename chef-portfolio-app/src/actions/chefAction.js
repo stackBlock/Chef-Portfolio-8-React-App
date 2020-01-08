@@ -50,7 +50,7 @@ export const postNewChefProfile = data => dispatch => {
     .post("https://chef-2.herokuapp.com/api/login/register", data)
     .then(res => {
       console.log(res);
-      // dispatch({ type: POST_NEW_CHEF_SUCCESS, payload: res.data });
+      dispatch({ type: POST_NEW_CHEF_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: POST_NEW_CHEF_FAILURE, payload: err.res });
