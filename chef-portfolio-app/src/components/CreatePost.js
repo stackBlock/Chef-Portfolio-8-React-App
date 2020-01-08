@@ -3,7 +3,9 @@
 // route back to chef profile page on submit
 
 import React from "react";
-import Page from "../pages/Page";
+
+import NavBar from "../universal/NavBar";
+import Footer from "../universal/Footer";
 import { connect } from "react-redux";
 import { postNewRecipe } from "../actions/index";
 import { Formik, Form, Field } from "formik";
@@ -23,7 +25,8 @@ function CreatePost(props) {
 
   return (
     <>
-      <Page>
+      <>
+        <NavBar />
         <h1>Create Post</h1>
 
         <Formik
@@ -119,7 +122,8 @@ function CreatePost(props) {
             );
           }}
         />
-      </Page>
+        <Footer />
+      </>
     </>
   );
 }

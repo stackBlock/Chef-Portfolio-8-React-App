@@ -26,7 +26,6 @@ function SignInPage(props) {
     <>
       <NavBar />
       <Header />
-      <SearchBar />
       <h1>I'm the Sign In Page</h1>
       <SignIn />
       {/* <button onClick={routeToNewProfile}>
