@@ -45,7 +45,7 @@ export const DELETE_A_RECIPE_FAILURE = "DELETE_A_RECIPE_FAILURE";
 export const getRecipes = () => dispatch => {
   dispatch({ type: FETCH_RECIPES_START });
   axios
-    .get("https://chef-2.herokuapp.com/api/recipes/")
+    .get("https://chef-2.herokuapp.com/api/recipes")
     .then(res => {
       console.log(res.data);
       dispatch({ type: FETCH_RECIPES_SUCCESS, payload: res.data });

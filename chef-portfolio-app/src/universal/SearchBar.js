@@ -9,16 +9,14 @@ function SearchBar() {
     <>
       {/* <div className="searchBarTwo">
         <div className="searchFormDesc">
-          <p>EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!</p>
+          <p>
+            EXPLORE MORE! Search by Chef, Ingredient, Recipe, Type and More!
+          </p>
         </div>
 
-        <form class="searchForm">
+        <form className="searchForm">
           <label>
-            <input
-              type="text"
-              name="search"
-              placeholder="Search"
-            />
+            <input type="text" name="search" placeholder="Search" />
           </label>
         </form>
       </div> */}

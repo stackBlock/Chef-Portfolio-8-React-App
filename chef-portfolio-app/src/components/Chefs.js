@@ -2,29 +2,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import ChefCard from "../components/ChefCard";
+import { getChefs } from "../actions/index";
 
 const Chefs = props => {
   return (
     <div>
-      <h1>I'll have a list of all the chefs one day</h1>
-      {/* {props.chefs.map(chef => (
+      <button onClick={props.getChefs}>Show Me The Chefs!</button>
+
+      {props.chefs.map(chef => (
         <ChefCard
           key={chef.id}
-          img={chef.img}
-          name={chef.name}
+          img={chef.user_picture}
+          name={chef.full_name}
           location={chef.location}
-          mission={chef.mission}
+          email={chef.email}
+          bio={chef.bio}
         />
-      ))} */}
+      ))}
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    chefs: state.chefs,
+    chefs: state.chefProfiles.chefs,
     error: state.error
   };
 };
 // console.log(chefs);
-export default connect(mapStateToProps, {})(Chefs);
+export default connect(mapStateToProps, { getChefs })(Chefs);

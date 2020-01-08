@@ -60,7 +60,6 @@ function CreatePost(props) {
           render={props => {
             return (
               <Form className="formContainer">
-
                 <label>
                   Your name:
                   <Field
@@ -132,19 +131,12 @@ function CreatePost(props) {
 
                 <label>
                   Servings:
-                  <Field
-                    name="servings"
-                    type="text"
-                    placeholder="2"
-                  />
+                  <Field name="servings" type="text" placeholder="2" />
                 </label>
 
                 <label>
                   Add a photo:
-                  <Field
-                    name="recipe_photo"
-                    type="file"
-                  />
+                  <Field name="recipe_photo" type="text" />
                 </label>
 
                 <input className="submitButton" type="submit" />
