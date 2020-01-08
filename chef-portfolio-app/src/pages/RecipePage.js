@@ -6,7 +6,7 @@
 import React, { useEffect } from "react";
 import Page from "../pages/Page";
 import { connect } from "react-redux";
-import { getARecipe } from "../actions/index";
+import { getARecipe, deleteRecipe } from "../actions/index";
 import RPAuthButtons from "../components/RPAuthButtons";
 import RPUnauthButtons from "../components/RPUnauthButtons";
 
@@ -55,7 +55,13 @@ function RecipePage(props) {
           </div>
         </div>
 
-        <div>{token ? <RPAuthButtons /> : <RPUnauthButtons />}</div>
+        <div>
+          {token ? (
+            <RPAuthButtons deleteRecipe={props.deleteRecipe} />
+          ) : (
+            <RPUnauthButtons />
+          )}
+        </div>
       </Page>
     </>
   );
@@ -68,7 +74,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getARecipe })(RecipePage);
+export default connect(mapStateToProps, { getARecipe, deleteRecipe })(
+  RecipePage
+);
 
 // key={recipe.id}
 // chefName={recipe.chef_name}
