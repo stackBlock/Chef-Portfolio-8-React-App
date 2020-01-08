@@ -71,10 +71,10 @@ export const getARecipe = id => dispatch => {
 };
 
 //specific for one chef's set of recipes
-export const getChefRecipes = () => dispatch => {
+export const getChefRecipes = userId => dispatch => {
   dispatch({ type: FETCH_CHEF_RECIPES_START });
   axios
-    .get("URL")
+    .get(`https://chef-2.herokuapp.com/api/recipes/user/${userId}`)
     .then(res => {
       console.log(res.data);
       //dispatch({type: FETCH_CHEF_RECIPES_SUCCESS, payload: res.data})
