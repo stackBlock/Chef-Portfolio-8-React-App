@@ -26,7 +26,6 @@ function SignInPage(props) {
     <>
       <NavBar />
       <Header />
-      <SearchBar />
       <SignIn />
       {/* <button onClick={routeToNewProfile}>
         Sign Up (this will link off to the sign up component eventually

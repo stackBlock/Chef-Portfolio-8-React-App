@@ -4,13 +4,13 @@ import {
   FETCH_CHEFS_FAILURE,
   POST_NEW_CHEF_START,
   POST_NEW_CHEF_SUCCESS,
-  POST_NEW_CHEF_FAILURE,
-  UPDATE_CHEF_PROFILE_START,
-  UPDATE_CHEF_PROFILE_SUCCESS,
-  UPDATE_CHEF_PROFILE_FAILURE,
-  DELETE_CHEF_PROFILE_START,
-  DELETE_CHEF_PROFILE_SUCCESS,
-  DELETE_CHEF_PROFILE_FAILURE
+  POST_NEW_CHEF_FAILURE
+  // UPDATE_CHEF_PROFILE_START,
+  // UPDATE_CHEF_PROFILE_SUCCESS,
+  // UPDATE_CHEF_PROFILE_FAILURE,
+  // DELETE_CHEF_PROFILE_START,
+  // DELETE_CHEF_PROFILE_SUCCESS,
+  // DELETE_CHEF_PROFILE_FAILURE
 } from "../actions/index";
 
 const initialState = {
@@ -52,36 +52,36 @@ const chefReducer = (state = initialState, action) => {
         ...state,
         error: action.error //action.payload??
       };
-    case UPDATE_CHEF_PROFILE_START:
-      return {
-        ...state
-      };
-    case UPDATE_CHEF_PROFILE_SUCCESS:
-      return {
-        ...state,
-        chefs: action.payload,
-        error: ""
-      };
-    case UPDATE_CHEF_PROFILE_FAILURE:
-      return {
-        ...state,
-        error: action.error //action.payload??
-      };
-    case DELETE_CHEF_PROFILE_START:
-      return {
-        ...state
-      };
-    case DELETE_CHEF_PROFILE_SUCCESS:
-      return {
-        ...state,
-        chefs: action.payload,
-        error: ""
-      };
-    case DELETE_CHEF_PROFILE_FAILURE:
-      return {
-        ...state,
-        error: action.error //action.payload??
-      };
+    // case UPDATE_CHEF_PROFILE_START:
+    //   return {
+    //     ...state
+    //   };
+    // case UPDATE_CHEF_PROFILE_SUCCESS:
+    //   return {
+    //     ...state,
+    //     chefs: action.payload,
+    //     error: ""
+    //   };
+    // case UPDATE_CHEF_PROFILE_FAILURE:
+    //   return {
+    //     ...state,
+    //     error: action.error //action.payload??
+    //   };
+    // case DELETE_CHEF_PROFILE_START:
+    //   return {
+    //     ...state
+    //   };
+    // case DELETE_CHEF_PROFILE_SUCCESS:
+    //   return {
+    //     ...state,
+    //     chefs: action.payload,
+    //     error: ""
+    //   };
+    // case DELETE_CHEF_PROFILE_FAILURE:
+    //   return {
+    //     ...state,
+    //     error: action.error //action.payload??
+    //   };
     default:
       return state;
   }

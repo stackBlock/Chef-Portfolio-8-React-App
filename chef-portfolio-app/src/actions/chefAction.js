@@ -18,20 +18,20 @@ export const POST_NEW_CHEF_SUCCESS = "POST_NEW_CHEF_SUCCESS";
 export const POST_NEW_CHEF_FAILURE = "POST_NEW_CHEF_FAILURE";
 
 //actions for updating chef profile
-export const UPDATE_CHEF_PROFILE_START = "UPDATE_CHEF_PROFILE_START";
-export const UPDATE_CHEF_PROFILE_SUCCESS = "UPDATE_CHEF_PROFILE_SUCCESS";
-export const UPDATE_CHEF_PROFILE_FAILURE = "UPDATE_CHEF_PROFILE_FAILURE";
+// export const UPDATE_CHEF_PROFILE_START = "UPDATE_CHEF_PROFILE_START";
+// export const UPDATE_CHEF_PROFILE_SUCCESS = "UPDATE_CHEF_PROFILE_SUCCESS";
+// export const UPDATE_CHEF_PROFILE_FAILURE = "UPDATE_CHEF_PROFILE_FAILURE";
 
 //actions for deleting chef profile
-export const DELETE_CHEF_PROFILE_START = "DELETE_CHEF_PROFILE_START";
-export const DELETE_CHEF_PROFILE_SUCCESS = "DELETE_CHEF_PROFILE_SUCCESS";
-export const DELETE_CHEF_PROFILE_FAILURE = "DELETE_CHEF_PROFILE_FAILURE";
+// export const DELETE_CHEF_PROFILE_START = "DELETE_CHEF_PROFILE_START";
+// export const DELETE_CHEF_PROFILE_SUCCESS = "DELETE_CHEF_PROFILE_SUCCESS";
+// export const DELETE_CHEF_PROFILE_FAILURE = "DELETE_CHEF_PROFILE_FAILURE";
 
 //specific for all chefs
 export const getChefs = () => dispatch => {
   dispatch({ type: FETCH_CHEFS_START });
   axios
-    .get("URL")
+    .get("https://chef-2.herokuapp.com/api/user/allusers")
     .then(res => {
       console.log(res.data);
       //dispatch({type: FETCH_CHEFS_SUCCESS, payload: res.data})
@@ -46,8 +46,8 @@ export const postNewChefProfile = data => dispatch => {
   //need to include what data to post
 
   dispatch({ type: POST_NEW_CHEF_START });
-  axios
-    .post("URL", data)
+  axios //https://reqres.in/api/users/
+    .post("https://chef-2.herokuapp.com/api/login/register", data)
     .then(res => {
       console.log(res);
       // dispatch({ type: POST_NEW_CHEF_SUCCESS, payload: res.data });
@@ -57,34 +57,34 @@ export const postNewChefProfile = data => dispatch => {
     });
 };
 
-//for updating chef profile
-export const updateChefProfile = (data, id) => dispatch => {
-  //need to include what data to post
+// for updating chef profile
+// export const updateChefProfile = (data, id) => dispatch => {
+//   //need to include what data to post
 
-  dispatch({ type: UPDATE_CHEF_PROFILE_START });
-  axios
-    .put(`URL/${id}`, data)
-    .then(res => {
-      console.log(res);
-      // dispatch({ type: UPDATE_CHEF_PROFILE_SUCCESS, payload: res.data });
-    })
-    .catch(err => {
-      dispatch({ type: UPDATE_CHEF_PROFILE_FAILURE, payload: err.res });
-    });
-};
+//   dispatch({ type: UPDATE_CHEF_PROFILE_START });
+//   axios
+//     .put(`URL/${id}`, data)
+//     .then(res => {
+//       console.log(res);
+//       // dispatch({ type: UPDATE_CHEF_PROFILE_SUCCESS, payload: res.data });
+//     })
+//     .catch(err => {
+//       dispatch({ type: UPDATE_CHEF_PROFILE_FAILURE, payload: err.res });
+//     });
+// };
 
 //for deleting a chef profile
-export const deleteChefProfile = id => dispatch => {
-  //need to include what data to post
+// export const deleteChefProfile = id => dispatch => {
+//   //need to include what data to post
 
-  dispatch({ type: DELETE_CHEF_PROFILE_START });
-  axios
-    .delete(`URL/${id}`)
-    .then(res => {
-      console.log(res);
-      // dispatch({ type: DELETE_CHEF_PROFILE_SUCCESS, payload: res.data });
-    })
-    .catch(err => {
-      dispatch({ type: DELETE_CHEF_PROFILE_FAILURE, payload: err.res });
-    });
-};
+//   dispatch({ type: DELETE_CHEF_PROFILE_START });
+//   axios
+//     .delete(`URL/${id}`)
+//     .then(res => {
+//       console.log(res);
+//       // dispatch({ type: DELETE_CHEF_PROFILE_SUCCESS, payload: res.data });
+//     })
+//     .catch(err => {
+//       dispatch({ type: DELETE_CHEF_PROFILE_FAILURE, payload: err.res });
+//     });
+// };
