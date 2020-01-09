@@ -93,7 +93,7 @@ export const postNewRecipe = data => dispatch => {
     .post("https://chef-2.herokuapp.com/api/recipes/post", data)
     .then(res => {
       console.log(res);
-      // dispatch({ type: POST_NEW_RECIPE_SUCCESS, payload: res.data });
+      dispatch({ type: POST_NEW_RECIPE_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: POST_NEW_RECIPE_FAILURE, payload: err.res });
