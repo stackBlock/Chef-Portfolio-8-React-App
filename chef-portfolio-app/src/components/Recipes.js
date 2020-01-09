@@ -87,6 +87,8 @@ function Recipes() {
               chefName={recipe.chef_name}
               title={recipe.recipe_name}
               photo={recipe.recipe_photo}
+              cook_time={recipe.cook_time}
+              user_id={recipe.user_id}
               setRecipes={setRecipes}
               recipes={recipes}
             />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Page from "../pages/Page";
 import { connect } from "react-redux";
 import { useParams } from "react-router";
@@ -18,6 +18,15 @@ const RecipeEditForm = props => {
     prep_time: ""
   });
 
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/api/recipes/recipeid/${id}`)
+      .then(res => {
+        console.log(res);
+        setEditRecipe(res.data);
+      });
+  }, [id]);
+
   const handleChange = e => {
     setEditRecipe({
       ...editRecipe,
@@ -31,7 +40,7 @@ const RecipeEditForm = props => {
       .put(`/api/recipes/update/${id}`, editRecipe)
       .then(res => {
         console.log(res);
-        props.history.push("/");
+        props.history.push(`/recipe/${id}`);
       })
       .catch(err => {
         console.log(err);

@@ -10,6 +10,10 @@ function RecipeCard(props) {
   // const routeToEditForm = () => {
   //   props.history.push(`/edit-recipe/${props.id}`);
   // };
+  const token = localStorage.getItem("token");
+  const user = localStorage.getItem("user");
+
+  console.log(user);
 
   const deleteRecipe = () => {
     axios
@@ -38,12 +42,17 @@ function RecipeCard(props) {
           <img src={props.photo} alt="" />
           <h2>{props.title}</h2>
           <p>Chef: {props.chefName}</p>
+          <p>Cook time: {props.cook_time}</p>
         </div>
       </Link>
-      <button onClick={deleteRecipe}>Delete Recipe</button>
-      <Link to={`/edit-recipe/${props.id}`}>
-        <button>Edit Recipe</button>
-      </Link>
+      {token ? <button onClick={deleteRecipe}>Delete Recipe</button> : ""}
+      {token ? (
+        <Link to={`/edit-recipe/${props.id}`}>
+          <button>Edit Recipe</button>
+        </Link>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

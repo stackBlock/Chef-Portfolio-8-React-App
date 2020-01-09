@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function CPUnauthButtons() {
   return (
     <div>
-      <button>Return to Recipes</button>
-      <button>Meet the Chefs</button>
+      <Link to="/">
+        <button>Return to Recipes</button>
+      </Link>
+      <Link to="/meet-the-chefs">
+        <button>Return to Chefs</button>
+      </Link>
     </div>
   );
 }
