@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Page from "../pages/Page";
-import { connect } from "react-redux";
 import { useParams } from "react-router";
-import { updateRecipe } from "../actions/index";
 import { axiosWithAuth } from "../authentication/AxiosWithAuth";
 
 const RecipeEditForm = props => {

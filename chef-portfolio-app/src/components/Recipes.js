@@ -11,7 +11,6 @@ function Recipes() {
 
   useEffect(() => {
     axios.get("https://chef-2.herokuapp.com/api/recipes").then(res => {
-      console.log(res);
       setRecipes(res.data);
     });
   }, []);
