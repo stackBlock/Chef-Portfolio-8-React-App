@@ -6,10 +6,15 @@ function RPAuthButtons(props) {
   console.log(props);
   return (
     <div>
+
       {/* <button>Delete Recipe</button>
       <button>Edit Recipe</button> */}
+
       <button className="greenButton">Create Post</button>
       <button className="greenButton">My Profile</button>
+
+
+
     </div>
   );
 }

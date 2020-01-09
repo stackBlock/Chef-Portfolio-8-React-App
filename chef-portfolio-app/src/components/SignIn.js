@@ -60,7 +60,7 @@ function SignIn({ history, match }) {
                 <Field
                   className="input inputPassword"
                   name="password"
-                  type="text"
+                  type="password"
                   placeholder="enter password"
                 />
               </label>
