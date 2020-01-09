@@ -44,14 +44,14 @@ function RecipePage(props) {
         <div>
           <h4>Recipe Media</h4>
           <div>
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
           </div>
         </div>
 
