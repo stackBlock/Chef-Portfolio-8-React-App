@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 //needs to push to chef profile
 
 function ChefCard(props) {
-  console.log(props);
   return (
     <Link to={`/chef-profile/${props.id}`}>
       <div className="chefCard">
