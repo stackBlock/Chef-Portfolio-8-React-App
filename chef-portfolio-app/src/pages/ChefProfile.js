@@ -69,7 +69,9 @@ function ChefProfile(props) {
             ))}
           </div>
         </div>
-        <div>{token ? <CPAuthButtons /> : <CPUnauthButtons />}</div>
+        <div>
+          {token ? <CPAuthButtons props={props} /> : <CPUnauthButtons />}
+        </div>
       </Page>
     </>
   );
