@@ -10,7 +10,7 @@ const Chefs = props => {
   }, []);
 
   return (
-    <div>
+    <div className="chefCardContainer">
       {/* <button onClick={props.getChefs}>Show Me The Chefs!</button> */}
 
       {props.chefs.map(chef => (
