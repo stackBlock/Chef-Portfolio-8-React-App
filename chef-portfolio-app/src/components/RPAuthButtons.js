@@ -7,10 +7,12 @@ function RPAuthButtons(props) {
   console.log(props);
   return (
     <div>
+
       {/* <button>Delete Recipe</button>
       <button>Edit Recipe</button> */}
       <button>Create Post</button>
       <button>My Profile</button>
+
     </div>
   );
 }
