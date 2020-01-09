@@ -3,81 +3,73 @@
 // guest user: buttons to go back to Guest Homepage (recipes) or to Meet The Chefs
 // chef user: buttons to Create New Post or view My Profile
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Page from "../pages/Page";
-import { connect } from "react-redux";
-import { getARecipe, deleteRecipe } from "../actions/index";
 import RPAuthButtons from "../components/RPAuthButtons";
 import RPUnauthButtons from "../components/RPUnauthButtons";
+import axios from "axios";
 
 function RecipePage(props) {
   console.log(props);
+  const [recipe, setRecipe] = useState({});
 
   useEffect(() => {
-    props.getARecipe(props.match.params.id);
-  }, []);
+    axios
+      .get(
+        `https://chef-2.herokuapp.com/api/recipes/recipeid/${props.match.params.id}`
+      )
+      .then(res => {
+        console.log(res);
+        setRecipe(res.data);
+      })
+      .catch(err => console.log(err));
+  }, [props.match.params.id]);
 
   const token = localStorage.getItem("token");
 
   return (
     <>
       <Page>
-        <h2>{props.recipes.recipe_name}</h2>
+        <h2>{recipe.recipe_name}</h2>
         <div>
-          <p>Chef {props.recipes.chef_name}</p>
+          <p>Chef {recipe.chef_name}</p>
         </div>
-        <img src={props.recipes.recipe_photo}></img>
+        <img src={recipe.recipe_photo}></img>
         <div>
           <h4>Let's Cook!</h4>
-          <p>Approximately {props.recipes.cook_time} hours</p>
+          <p>Approximately {recipe.cook_time} hours</p>
         </div>
         <div>
           <div>
             <h2>Ingredients</h2>
-            <p>{props.recipes.recipe_ingredients}</p>
+            <p>{recipe.recipe_ingredients}</p>
           </div>
           <div>
             <h2>Instructions</h2>
-            <p>{props.recipes.instructions}</p>
+            <p>{recipe.instructions}</p>
           </div>
         </div>
         <div>
           <h4>Recipe Media</h4>
           <div>
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
-            <img />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
+            <img alt="" />
           </div>
         </div>
 
-        <div>
-          {token ? (
-            <RPAuthButtons deleteRecipe={props.deleteRecipe} />
-          ) : (
-            <RPUnauthButtons />
-          )}
-        </div>
+        <div>{token ? <RPAuthButtons /> : <RPUnauthButtons />}</div>
       </Page>
     </>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    recipes: state.recipes.recipes,
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { getARecipe, deleteRecipe })(
-  RecipePage
-);
-
+export default RecipePage;
 // key={recipe.id}
 // chefName={recipe.chef_name}
 // title={recipe.recipe_name}

@@ -14,7 +14,7 @@ function RecipeCard(props) {
   return (
     <Link to={`/recipe/${props.id}`}>
       <div>
-        <img src={props.photo} />
+        <img src={props.photo} alt="" />
         <h2>{props.title}</h2>
         <p>Chef: {props.chefName}</p>
       </div>

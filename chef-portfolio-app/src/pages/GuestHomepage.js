@@ -4,7 +4,8 @@ import React from "react";
 import Page from "../pages/Page";
 import Recipes from "../components/Recipes";
 
-function GuestHomepage() {
+function GuestHomepage(props) {
+  console.log(props);
   return (
     <Page>
       <Recipes />

@@ -1,37 +1,42 @@
 //map over the array of chefs and render a ChefCard for each chef here
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import ChefCard from "../components/ChefCard";
-import { getChefs } from "../actions/index";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const Chefs = props => {
+import ChefCard from "../components/ChefCard";
+
+const Chefs = () => {
+  const [chefs, setChefs] = useState();
+
   useEffect(() => {
-    props.getChefs();
+    axios.get("https://chef-2.herokuapp.com/api/user/allusers").then(res => {
+      console.log(res);
+      setChefs(res.data);
+    });
   }, []);
 
   return (
-    <div className="chefCardContainer">
-      {/* <button onClick={props.getChefs}>Show Me The Chefs!</button> */}
+    <div>
+      {/* {chefs.map(chef => (
 
-      {props.chefs.map(chef => (
         <ChefCard
           key={chef.id}
+          id={chef.id}
           img={chef.user_picture}
           name={chef.full_name}
-          location={chef.location}
+          location={chef.Location}
           email={chef.email}
-          bio={chef.bio}
+          bio={chef.Bio}
         />
-      ))}
+      ))} */}
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    chefs: state.chefProfiles.chefs,
-    error: state.error
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     chefs: state.chefProfiles.chefs,
+//     error: state.error
+//   };
+// };
 
-export default connect(mapStateToProps, { getChefs })(Chefs);
+export default Chefs;
