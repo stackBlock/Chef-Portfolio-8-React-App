@@ -11,15 +11,12 @@ function RecipeCard(props) {
   //   props.history.push(`/edit-recipe/${props.id}`);
   // };
   const token = localStorage.getItem("token");
-  const user = localStorage.getItem("user");
-
-  console.log(user);
+  // const user = localStorage.getItem("user");
 
   const deleteRecipe = () => {
     axios
       .delete(`https://chef-2.herokuapp.com/api/recipes/delete/${props.id}`)
       .then(res => {
-        console.log(res);
         let newRecipes = props.recipes.filter(recipe => {
           return recipe.id !== props.id;
         });
@@ -30,7 +27,6 @@ function RecipeCard(props) {
       });
   };
 
-  console.log(props);
   // const routeToRecipePage = () => {
   //   props.history.push(`/recipe/${props.match.params.id}`);
   // };

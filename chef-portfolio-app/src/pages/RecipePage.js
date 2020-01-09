@@ -34,7 +34,7 @@ function RecipePage(props) {
         <div>
           <p>Chef {recipe.chef_name}</p>
         </div>
-        <img src={recipe.recipe_photo}></img>
+        <img src={recipe.recipe_photo} alt=""></img>
         <div>
           <h4>Let's Cook!</h4>
           <p>Approximately {recipe.cook_time} </p>
