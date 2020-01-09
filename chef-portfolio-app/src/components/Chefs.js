@@ -9,14 +9,12 @@ const Chefs = () => {
 
   useEffect(() => {
     axios.get("https://chef-2.herokuapp.com/api/user/allusers").then(res => {
-      console.log(res);
       setChefs(res.data);
     });
   }, []);
 
   return (
     <div>
-      {console.log(chefs)}
       {chefs.map(chef => (
         <ChefCard
           key={chef.id}
