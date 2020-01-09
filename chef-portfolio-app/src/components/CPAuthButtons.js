@@ -2,11 +2,14 @@ import React from "react";
 
 //onClick for Edit Profile component
 
-function CPAuthButtons() {
+function CPAuthButtons(props) {
+  const routeToCreatePost = () => {
+    props.props.history.push("/create-post");
+  };
+
   return (
     <div>
-      <button>Create Post</button>
-      <button>Edit Profile</button>
+      <button onClick={routeToCreatePost}>Create Post</button>
     </div>
   );
 }

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Page from "../pages/Page";
 import { connect } from "react-redux";
+import { useParams } from "react-router";
 import { updateRecipe } from "../actions/index";
+import { axiosWithAuth } from "../authentication/AxiosWithAuth";
 
 const RecipeEditForm = props => {
+  let { id } = useParams();
+
   const [editRecipe, setEditRecipe] = useState({
     recipe_name: "",
-    chef_name: "",
     recipe_photo: "",
     cook_time: "",
     recipe_ingredients: "",
@@ -20,14 +23,19 @@ const RecipeEditForm = props => {
       ...editRecipe,
       [e.target.name]: e.target.value
     });
-    console.log(editRecipe);
   };
 
-  const handleSubmit = (e, id) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    props.updateRecipe(editRecipe, 4);
-    console.log(editRecipe);
-    // props.history.push(`/recipe/${id}`);
+    axiosWithAuth()
+      .put(`/api/recipes/update/${id}`, editRecipe)
+      .then(res => {
+        console.log(res);
+        props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (
@@ -114,10 +122,4 @@ const RecipeEditForm = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { updateRecipe })(RecipeEditForm);
+export default RecipeEditForm;

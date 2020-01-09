@@ -87,6 +87,8 @@ function Recipes() {
               chefName={recipe.chef_name}
               title={recipe.recipe_name}
               photo={recipe.recipe_photo}
+              setRecipes={setRecipes}
+              recipes={recipes}
             />
           );
         })
