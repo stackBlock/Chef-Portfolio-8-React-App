@@ -43,7 +43,9 @@ function Recipes() {
         })
       );
       setLoading(false);
+
     }, 300);
+
   }, [inputText, recipes]);
 
   const handleChange = e => {
@@ -73,24 +75,31 @@ function Recipes() {
         </form>
       </div>
 
-      {loading || !searchResults.length ? (
-        <div>
-          <Loader type="TailSpin" color="#07FE20" height={50} width={50} />
-          <p>Nothing to display...</p>
-        </div>
-      ) : (
-        searchResults.map(recipe => {
-          return (
-            <RecipeCard
-              key={recipe.id}
-              id={recipe.id}
-              chefName={recipe.chef_name}
-              title={recipe.recipe_name}
-              photo={recipe.recipe_photo}
+
+      {
+        loading || !searchResults.length
+        ?
+          <div>
+            <Loader
+              type="TailSpin"
+              color="#07FE20"
+              height={50}
+              width={50}
             />
-          );
-        })
-      )}
+            <p>Nothing to display...</p>
+          </div>
+        :
+          searchResults.map(recipe => {
+            return(
+              <RecipeCard
+                key={recipe.id}
+                chefName={recipe.chef_name}
+                title={recipe.recipe_name}
+                photo={recipe.recipe_photo}
+              />
+            )
+          })
+      }
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
       {/* {recipes.map(recipe => (

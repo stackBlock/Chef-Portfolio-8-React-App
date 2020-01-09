@@ -17,6 +17,7 @@ const Chefs = () => {
   return (
     <div>
       {/* {chefs.map(chef => (
+
         <ChefCard
           key={chef.id}
           id={chef.id}

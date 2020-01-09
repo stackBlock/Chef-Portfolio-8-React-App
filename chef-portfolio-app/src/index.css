@@ -17,6 +17,10 @@ code {
 }
 
 
+a{
+  color: white;
+  text-decoration: none;
+}
 
 .navItems a, .footerNavItems a, .logoContainer a{
   color: white;
