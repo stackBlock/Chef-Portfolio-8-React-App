@@ -22,7 +22,7 @@ function ChefProfile(props) {
 
   useEffect(() => {
     axios
-      .get(`https://chef-2.herokuapp.com/api/user/user/${id}`)
+      .get(`https://chef-2.herokuapp.com/api/user/user/${chef.id}`)
       .then(res => {
         console.log(res.data);
         setChef(res.data);
