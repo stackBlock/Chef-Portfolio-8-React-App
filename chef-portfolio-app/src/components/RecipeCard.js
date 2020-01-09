@@ -4,21 +4,47 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function RecipeCard(props) {
+  // const routeToEditForm = () => {
+  //   props.history.push(`/edit-recipe/${props.id}`);
+  // };
+
+  const deleteRecipe = () => {
+    axios
+      .delete(`https://chef-2.herokuapp.com/api/recipes/delete/${props.id}`)
+      .then(res => {
+        console.log(res);
+        let newRecipes = props.recipes.filter(recipe => {
+          return recipe.id !== props.id;
+        });
+        props.setRecipes(newRecipes);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   console.log(props);
   // const routeToRecipePage = () => {
   //   props.history.push(`/recipe/${props.match.params.id}`);
   // };
 
   return (
-    <Link to={`/recipe/${props.id}`}>
-      <div>
-        <img src={props.photo} alt="" />
-        <h2>{props.title}</h2>
-        <p>Chef: {props.chefName}</p>
-      </div>
-    </Link>
+    <div>
+      <Link to={`/recipe/${props.id}`}>
+        <div>
+          <img src={props.photo} alt="" />
+          <h2>{props.title}</h2>
+          <p>Chef: {props.chefName}</p>
+        </div>
+      </Link>
+      <button onClick={deleteRecipe}>Delete Recipe</button>
+      <Link to={`/edit-recipe/${props.id}`}>
+        <button>Edit Recipe</button>
+      </Link>
+    </div>
   );
 }
 

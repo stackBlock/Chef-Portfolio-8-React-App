@@ -5,19 +5,17 @@ import axios from "axios";
 import ChefCard from "../components/ChefCard";
 
 const Chefs = () => {
-  const [chefs, setChefs] = useState();
+  const [chefs, setChefs] = useState([]);
 
   useEffect(() => {
     axios.get("https://chef-2.herokuapp.com/api/user/allusers").then(res => {
-      console.log(res);
       setChefs(res.data);
     });
   }, []);
 
   return (
     <div>
-      {/* {chefs.map(chef => (
-
+      {chefs.map(chef => (
         <ChefCard
           key={chef.id}
           id={chef.id}
@@ -27,16 +25,9 @@ const Chefs = () => {
           email={chef.email}
           bio={chef.Bio}
         />
-      ))} */}
+      ))}
     </div>
   );
 };
-
-// const mapStateToProps = state => {
-//   return {
-//     chefs: state.chefProfiles.chefs,
-//     error: state.error
-//   };
-// };
 
 export default Chefs;

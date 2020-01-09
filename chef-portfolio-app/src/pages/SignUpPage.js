@@ -12,7 +12,7 @@ function SignUpPage(props) {
       <NavBar />
       <Header />
       <SearchBar />
-      <SignUp />
+      <SignUp props={props} />
       <Footer />
     </>
   );

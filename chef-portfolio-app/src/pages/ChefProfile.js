@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import CPAuthButtons from "../components/CPAuthButtons";
 import CPUnauthButtons from "../components/CPUnauthButtons";
 import axios from "axios";
+import RecipeCard from "../components/RecipeCard";
 
 function ChefProfile(props) {
   const token = localStorage.getItem("token");
@@ -12,23 +13,30 @@ function ChefProfile(props) {
 
   const { id } = useParams();
 
-  const [chef, setChef] = useState([
-    {
-      full_name: "",
-      location: "",
-      Bio: ""
-    }
-  ]);
+  const [chef, setChef] = useState([]);
+  const [chefRecipes, setChefRecipes] = useState([]);
 
   useEffect(() => {
     axios
       .get(`https://chef-2.herokuapp.com/api/user/user/${id}`)
       .then(res => {
-        console.log(res.data);
+        console.log(res);
         setChef(res.data);
       })
       .catch(err => console.log(err));
-  }, [id]);
+  }, [id, setChef]);
+
+  useEffect(() => {
+    axios
+      .get(`https://chef-2.herokuapp.com/api/recipes/user/${id}`)
+      .then(res => {
+        console.log(res);
+        setChefRecipes(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, [id, setChefRecipes]);
 
   console.log(chef); //the chef is set to the 1st item in the array, why isn't it displaying??
 
@@ -37,26 +45,33 @@ function ChefProfile(props) {
       <Page>
         <div>
           {/* <img>{props.chefs.profileImg}</img> */}
-          <h2>{chef.full_name}</h2>
-          <p>Master Chef</p>
-          <p>{chef.location}</p>
+          {chef.map(c => (
+            <div>
+              <h2>{c.full_name}</h2>
+              <p>Master Chef</p>
+              <p>{c.Location}</p>
+              <div>
+                <h3>About:</h3>
+                <p>{c.Bio}</p>
+              </div>
+            </div>
+          ))}
+
+          <div>
+            {chefRecipes.map(recipe => (
+              <RecipeCard
+                key={recipe.id}
+                id={recipe.id}
+                chefName={recipe.chef_name}
+                title={recipe.recipe_name}
+                photo={recipe.recipe_photo}
+              />
+            ))}
+          </div>
         </div>
         <div>
-          <h3>About:</h3>
-          <p>{chef.Bio}</p>
+          {token ? <CPAuthButtons props={props} /> : <CPUnauthButtons />}
         </div>
-        <div>
-          {/* {props.chefs.recipes.map(recipe => (
-            <RecipeCard
-              key={recipe.id}
-              img={recipe.img}
-              name={recipe.name}
-              ingredients={recipe.ingredients}
-              instructions={recipe.instructions}
-            />
-          ))} */}
-        </div>
-        <div>{token ? <CPAuthButtons /> : <CPUnauthButtons />}</div>
       </Page>
     </>
   );

@@ -1,7 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { postNewChefProfile } from "../actions/index";
+import React, { useState } from "react";
 
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -21,6 +20,9 @@ const userSchema = Yup.object().shape({
 });
 
 const SignUp = props => {
+  console.log(props);
+  const [user, setUser] = useState({});
+
   return (
     <>
       <h1>Sign Up</h1>
@@ -38,7 +40,16 @@ const SignUp = props => {
         }}
         onSubmit={(values, tools) => {
           tools.resetForm();
-          props.postNewChefProfile(values);
+          axios
+            .post("https://chef-2.herokuapp.com/api/login/register", values)
+            .then(res => {
+              console.log("SUCCESSFUL", res);
+              setUser(res.data);
+              props.props.history.push(`/chef-profile/${res.data.id}`);
+            })
+            .catch(err => {
+              console.log("FAILURE", err);
+            });
         }}
         validationSchema={userSchema}
         render={props => {
@@ -171,10 +182,4 @@ const SignUp = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { postNewChefProfile })(SignUp);
+export default SignUp;
