@@ -6,15 +6,13 @@ import React from "react";
 
 import NavBar from "../universal/NavBar";
 import Footer from "../universal/Footer";
-import { connect } from "react-redux";
-import { postNewRecipe } from "../actions/index";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 function CreatePost(props) {
   //this is only for demonstration purposes- include axios post with this props.history.push
 
-  // const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   const userSchema = Yup.object().shape({
     recipe_name: Yup.string().required(),
@@ -41,20 +39,19 @@ function CreatePost(props) {
           }}
           onSubmit={(values, tools) => {
             tools.resetForm();
-            props.postNewRecipe(values);
             // props.history.push(`/recipe/${props.match.params.id}`);
-            // axios
-            //   .post("https://reqres.in/api/users", values)
-            //   .then(res => {
-            //     console.log("SUCCESSFUL", res);
+            axios
+              .post("https://chef-2.herokuapp.com/api/recipes/post", values)
+              .then(res => {
+                console.log("SUCCESSFUL", res);
 
-            //     const recipeData = res.data;
+                const recipeData = res.data;
 
-            //     setRecipes([...recipes, recipeData]);
-            //   })
-            //   .catch(err => {
-            //     console.log("FAILURE", err);
-            //   });
+                setRecipes([...recipes, recipeData]);
+              })
+              .catch(err => {
+                console.log("FAILURE", err);
+              });
           }}
           validationSchema={userSchema}
           render={props => {
@@ -150,10 +147,4 @@ function CreatePost(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { postNewRecipe })(CreatePost);
+export default CreatePost;

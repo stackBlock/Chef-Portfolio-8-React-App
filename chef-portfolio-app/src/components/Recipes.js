@@ -2,15 +2,11 @@
 // thinking here, we should make this reusable so that the Recipes can be displayed on a chef's profile (just his/her recipes) and on the Guest Homepage (all recipes in database)
 
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { getRecipes } from "../actions/recipeAction";
 import RecipeCard from "./RecipeCard";
 import axios from "axios";
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 
-function Recipes(props) {
-  console.log(props.recipes);
-
+function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -36,16 +32,20 @@ function Recipes(props) {
       setSearchResults(
         recipes.filter(recipe => {
           // return recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
-          if(
-            recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
-            || recipe.chef_name.toLowerCase().includes(inputText.toLowerCase())
-          ){
+          if (
+            recipe.recipe_name
+              .toLowerCase()
+              .includes(inputText.toLowerCase()) ||
+            recipe.chef_name.toLowerCase().includes(inputText.toLowerCase())
+          ) {
             return recipe;
           }
         })
-      )
+      );
       setLoading(false);
-    }, 300)
+
+    }, 300);
+
   }, [inputText, recipes]);
 
   const handleChange = e => {
@@ -74,6 +74,7 @@ function Recipes(props) {
           </label>
         </form>
       </div>
+
 
       {
         loading || !searchResults.length
@@ -118,11 +119,4 @@ function Recipes(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    recipes: state.recipes.recipes,
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { getRecipes })(Recipes);
+export default Recipes;
