@@ -30,7 +30,6 @@ function Recipes(props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-<<<<<<< HEAD
     setLoading(true);
 
     setTimeout(() => {
@@ -47,15 +46,6 @@ function Recipes(props) {
       )
       setLoading(false);
     }, 300)
-=======
-    setSearchResults(
-      recipes.filter(recipe => {
-        return recipe.recipe_name
-          .toLowerCase()
-          .includes(inputText.toLowerCase());
-      })
-    );
->>>>>>> 7bfd17f1ab211c3216afcce4274bad8c5c75de4f
   }, [inputText, recipes]);
 
   const handleChange = e => {
@@ -85,7 +75,6 @@ function Recipes(props) {
         </form>
       </div>
 
-<<<<<<< HEAD
       {
         loading || !searchResults.length
         ?
@@ -110,18 +99,6 @@ function Recipes(props) {
             )
           })
       }
-=======
-      {searchResults.map(recipe => {
-        return (
-          <RecipeCard
-            key={recipe.id}
-            chefName={recipe.chef_name}
-            title={recipe.recipe_name}
-            photo={recipe.recipe_photo}
-          />
-        );
-      })}
->>>>>>> 7bfd17f1ab211c3216afcce4274bad8c5c75de4f
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
       {/* {recipes.map(recipe => (
