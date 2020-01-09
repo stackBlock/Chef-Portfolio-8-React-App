@@ -5,8 +5,8 @@ import React from "react";
 function CPAuthButtons() {
   return (
     <div>
-      <button>Create Post</button>
-      <button>Edit Profile</button>
+      <button className="greenButton">Create Post</button>
+      <button className="greenButton">Edit Profile</button>
     </div>
   );
 }
