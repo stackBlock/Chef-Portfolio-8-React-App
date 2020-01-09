@@ -11,7 +11,8 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 function CreatePost(props) {
-  //this is only for demonstration purposes- include axios post with this props.history.push
+  console.log(props);
+  const user = localStorage.getItem("user");
 
   const [recipes, setRecipes] = useState([]);
 
@@ -36,7 +37,8 @@ function CreatePost(props) {
             cook_time: "",
             prep_time: "",
             instructions: "", //req
-            servings: ""
+            servings: "",
+            user_id: user
           }}
           onSubmit={(values, tools) => {
             tools.resetForm();
@@ -49,6 +51,7 @@ function CreatePost(props) {
                 const recipeData = res.data;
 
                 setRecipes([...recipes, recipeData]);
+                props.history.push(`/chef-profile/${user}`);
               })
               .catch(err => {
                 console.log("FAILURE", err);
