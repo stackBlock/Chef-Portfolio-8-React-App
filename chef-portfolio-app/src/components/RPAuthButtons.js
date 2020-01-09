@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
 function RPAuthButtons(props) {
   // const { id } = useParams();
@@ -10,8 +9,11 @@ function RPAuthButtons(props) {
 
       {/* <button>Delete Recipe</button>
       <button>Edit Recipe</button> */}
-      <button>Create Post</button>
-      <button>My Profile</button>
+
+      <button className="greenButton">Create Post</button>
+      <button className="greenButton">My Profile</button>
+
+
 
     </div>
   );

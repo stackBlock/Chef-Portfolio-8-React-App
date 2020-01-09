@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/sign-up" component={SignUpPage} />
         {/* <Route exact path="/new-profile" component={NewProfile} /> */}
         <Route exact path="/chef-profile/:id" component={ChefProfile} />
-        <PrivateRoute path="/:id/create-post" component={CreatePost} />
+        <PrivateRoute path="/create-post" component={CreatePost} />
         <Route path="/meet-the-chefs" component={MeetChefs} />
         <Route path="/recipe/:id" component={RecipePage} />
         <Route path="/edit-recipe/:id" component={RecipeEditForm} />
