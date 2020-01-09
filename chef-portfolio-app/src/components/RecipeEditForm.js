@@ -25,7 +25,7 @@ const RecipeEditForm = props => {
 
   const handleSubmit = (e, id) => {
     e.preventDefault();
-    props.updateRecipe(editRecipe, id);
+    props.updateRecipe(editRecipe, 4);
     console.log(editRecipe);
     // props.history.push(`/recipe/${id}`);
   };

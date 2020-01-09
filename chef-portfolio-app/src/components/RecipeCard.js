@@ -5,18 +5,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function RecipeCard(props) {
-  console.log(props);
+function RecipeCard({ recipe }) {
   // const routeToRecipePage = () => {
   //   props.history.push(`/recipe/${props.match.params.id}`);
   // };
 
   return (
-    <Link to={`/recipe/${props.id}`}>
+    <Link to={`/recipe/${recipe.id}`}>
       <div>
-        <img src={props.photo} />
-        <h2>{props.title}</h2>
-        <p>Chef: {props.chefName}</p>
+        <img src={recipe.photo} />
+        <h2>{recipe.title}</h2>
+        <p>Chef: {recipe.chefName}</p>
       </div>
     </Link>
   );
