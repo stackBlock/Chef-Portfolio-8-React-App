@@ -305,6 +305,24 @@ label{
 
 
 
+/*Create Post styling*/
+
+.cpForm input, textarea{
+  padding: .75vh .75vw;
+
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+.cpForm textarea{
+  height: 100px;
+  width: 215px;
+}
+
+
+
+
 /*Search Bar*/
 
 .searchBarTwo{
