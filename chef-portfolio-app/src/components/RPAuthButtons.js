@@ -8,24 +8,14 @@ function RPAuthButtons(props) {
   console.log(props);
   return (
     <div>
-
       {/* <button>Delete Recipe</button>
       <button>Edit Recipe</button> */}
-<<<<<<< HEAD
-      <Link to="/create-post">
+      {/* <Link to="/create-post">
         <button className="greenButton">Create Post</button>
-      </Link>
+      </Link> */}
       <Link to={`/chef-profile/${id}`}>
-        <button className="greenButton">My Profile</button>
+        <button className="greenButton">Chef Profile</button>
       </Link>
-=======
-
-      <button className="greenButton">Create Post</button>
-      <button className="greenButton">My Profile</button>
-
-
-
->>>>>>> 2194d0e41cfa2df1856e65f4f1a3cbfd2ab35479
     </div>
   );
 }

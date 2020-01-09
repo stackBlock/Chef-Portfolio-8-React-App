@@ -45,10 +45,16 @@ function RecipeCard(props) {
           <p>Cook time: {props.cook_time}</p>
         </div>
       </Link>
-      {token ? <button onClick={deleteRecipe}>Delete Recipe</button> : ""}
+      {token ? (
+        <button className="greenButton" onClick={deleteRecipe}>
+          Delete Recipe
+        </button>
+      ) : (
+        ""
+      )}
       {token ? (
         <Link to={`/edit-recipe/${props.id}`}>
-          <button>Edit Recipe</button>
+          <button className="greenButton">Edit Recipe</button>
         </Link>
       ) : (
         ""

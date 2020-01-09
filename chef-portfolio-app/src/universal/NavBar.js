@@ -3,7 +3,15 @@ import { Link } from "react-router-dom";
 
 //conditional logic to toggle view of sign in button to disappear once logged in, and for the hamburger icon to appear
 
-function NavBar() {
+function NavBar(props) {
+  const token = localStorage.getItem("token");
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    // props.history.push("/");
+    document.location.reload();
+  };
+
   return (
     <nav className="nav">
       <div className="logoContainer">
@@ -23,9 +31,15 @@ function NavBar() {
       </div>
 
       <div className="buttonContainer">
-        <Link to="/sign-in">
-          <button className="signIn">Sign In</button>
-        </Link>
+        {token ? (
+          <button className="signIn" onClick={handleLogOut}>
+            Log Out
+          </button>
+        ) : (
+          <Link to="/sign-in">
+            <button className="signIn">Sign In</button>
+          </Link>
+        )}
 
         <Link to="/sign-up">
           <button className="signIn">Join Now</button>
