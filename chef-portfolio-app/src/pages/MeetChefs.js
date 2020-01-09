@@ -14,7 +14,7 @@ function MeetChefs(props) {
     <>
       <Page>
         <Chefs />
-        <button onClick={routeToGuestHomepage}>Back to Recipes</button>
+        <button onClick={routeToGuestHomepage} className="yellowButton">Back to Recipes</button>
       </Page>
     </>
   );
