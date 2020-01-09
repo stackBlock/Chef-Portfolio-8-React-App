@@ -66,7 +66,7 @@ const SignUp = props => {
                 <Field
                   className="input inputPassword"
                   name="password"
-                  type="text"
+                  type="password"
                   placeholder="enter password"
                 />
               </label>
@@ -81,7 +81,7 @@ const SignUp = props => {
                 <Field
                   className="input inputConfirmPassword"
                   name="confirmPassword"
-                  type="text"
+                  type="password"
                   placeholder="confirm password"
                 />
               </label>
