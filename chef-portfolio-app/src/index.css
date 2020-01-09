@@ -22,6 +22,35 @@ a{
   text-decoration: none;
 }
 
+.greenButton{
+  margin-right: 2vw;
+  padding: 0.25rem 1rem;
+
+  background: #07FE20;
+  font-weight: 600;
+
+  cursor: pointer;
+  outline: none;
+
+  border: none;
+  border-radius: 5px;
+}
+
+.redButton{
+  margin-right: 2vw;
+  padding: 0.25rem 1rem;
+
+  background: rgb(252, 14, 14);
+  color: white;
+  font-weight: 600;
+
+  cursor: pointer;
+  outline: none;
+
+  border: none;
+  border-radius: 5px;
+}
+
 .navItems a, .footerNavItems a, .logoContainer a{
   color: white;
   text-decoration: none;
@@ -269,6 +298,24 @@ label{
 }
 
 .inputBio{
+  height: 100px;
+  width: 215px;
+}
+
+
+
+
+/*Create Post styling*/
+
+.cpForm input, textarea{
+  padding: .75vh .75vw;
+
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+.cpForm textarea{
   height: 100px;
   width: 215px;
 }

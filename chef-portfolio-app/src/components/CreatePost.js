@@ -2,12 +2,15 @@
 // use axios.post request on form submit
 // route back to chef profile page on submit
 
+
 import React, { useState } from "react";
+
 
 import NavBar from "../universal/NavBar";
 import Footer from "../universal/Footer";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
+import axios from 'axios';
 import * as Yup from "yup";
 
 function CreatePost(props) {
@@ -60,7 +63,7 @@ function CreatePost(props) {
           validationSchema={userSchema}
           render={props => {
             return (
-              <Form className="formContainer">
+              <Form className="formContainer cpForm">
                 <label>
                   Your name:
                   <Field
@@ -71,7 +74,7 @@ function CreatePost(props) {
                 </label>
 
                 <label>
-                  Recipe name:
+                  *Recipe name:
                   <Field
                     name="recipe_name"
                     type="text"
@@ -85,7 +88,7 @@ function CreatePost(props) {
                 )}
 
                 <label>
-                  Ingredients:
+                  *Ingredients:
                   <Field
                     name="recipe_ingredients"
                     as="textarea"
@@ -94,6 +97,20 @@ function CreatePost(props) {
                 </label>
                 {props.errors.ingredients && props.touched.ingredients ? (
                   <span className="red">{props.errors.ingredients}</span>
+                ) : (
+                  ""
+                )}
+
+                <label>
+                  *Instructions:
+                  <Field
+                    name="instructions"
+                    as="textarea"
+                    placeholder="List of instructions"
+                  />
+                </label>
+                {props.errors.instructions && props.touched.instructions ? (
+                  <span className="red">{props.errors.instructions}</span>
                 ) : (
                   ""
                 )}
@@ -115,20 +132,6 @@ function CreatePost(props) {
                     placeholder="20 minutes"
                   />
                 </label>
-
-                <label>
-                  Instructions:
-                  <Field
-                    name="instructions"
-                    as="textarea"
-                    placeholder="List of instructions"
-                  />
-                </label>
-                {props.errors.instructions && props.touched.instructions ? (
-                  <span className="red">{props.errors.instructions}</span>
-                ) : (
-                  ""
-                )}
 
                 <label>
                   Servings:
