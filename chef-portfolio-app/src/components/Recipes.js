@@ -2,14 +2,11 @@
 // thinking here, we should make this reusable so that the Recipes can be displayed on a chef's profile (just his/her recipes) and on the Guest Homepage (all recipes in database)
 
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { getRecipes } from "../actions/recipeAction";
 import RecipeCard from "./RecipeCard";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
-function Recipes(props) {
-  console.log(props.recipes);
-
+function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -24,14 +21,29 @@ function Recipes(props) {
   const [inputText, setInputText] = useState("");
   const [searchResults, setSearchResults] = useState(recipes);
 
+  //loading state
+
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    setSearchResults(
-      recipes.filter(recipe => {
-        return recipe.recipe_name
-          .toLowerCase()
-          .includes(inputText.toLowerCase());
-      })
-    );
+    setLoading(true);
+
+    setTimeout(() => {
+      setSearchResults(
+        recipes.filter(recipe => {
+          // return recipe.recipe_name.toLowerCase().includes(inputText.toLowerCase())
+          if (
+            recipe.recipe_name
+              .toLowerCase()
+              .includes(inputText.toLowerCase()) ||
+            recipe.chef_name.toLowerCase().includes(inputText.toLowerCase())
+          ) {
+            return recipe;
+          }
+        })
+      );
+      setLoading(false);
+    }, 300);
   }, [inputText, recipes]);
 
   const handleChange = e => {
@@ -61,16 +73,24 @@ function Recipes(props) {
         </form>
       </div>
 
-      {searchResults.map(recipe => {
-        return (
-          <RecipeCard
-            key={recipe.id}
-            chefName={recipe.chef_name}
-            title={recipe.recipe_name}
-            photo={recipe.recipe_photo}
-          />
-        );
-      })}
+      {loading || !searchResults.length ? (
+        <div>
+          <Loader type="TailSpin" color="#07FE20" height={50} width={50} />
+          <p>Nothing to display...</p>
+        </div>
+      ) : (
+        searchResults.map(recipe => {
+          return (
+            <RecipeCard
+              key={recipe.id}
+              id={recipe.id}
+              chefName={recipe.chef_name}
+              title={recipe.recipe_name}
+              photo={recipe.recipe_photo}
+            />
+          );
+        })
+      )}
 
       {/* <button onClick={props.getRecipes}>Show Me Rick</button> */}
       {/* {recipes.map(recipe => (
@@ -90,11 +110,4 @@ function Recipes(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    recipes: state.recipes.recipes,
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { getRecipes })(Recipes);
+export default Recipes;
