@@ -7,7 +7,7 @@
 
 import React from "react";
 import NavBar from "../universal/NavBar";
-import Header from "../components/Header";
+
 // import { Link } from "react-router-dom";
 
 import SignIn from "../components/SignIn";
@@ -26,7 +26,7 @@ function SignInPage(props) {
   return (
     <>
       <NavBar />
-      <Header />
+
       <SignIn history={props.history} match={props.match} />
       {/* <button onClick={routeToNewProfile}>
         Sign Up (this will link off to the sign up component eventually
