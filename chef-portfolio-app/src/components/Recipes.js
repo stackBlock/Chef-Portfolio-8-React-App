@@ -2,14 +2,11 @@
 // thinking here, we should make this reusable so that the Recipes can be displayed on a chef's profile (just his/her recipes) and on the Guest Homepage (all recipes in database)
 
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { getRecipes } from "../actions/recipeAction";
 import RecipeCard from "./RecipeCard";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 
-function Recipes(props) {
-  console.log(props);
+function Recipes() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -86,10 +83,10 @@ function Recipes(props) {
           return (
             <RecipeCard
               key={recipe.id}
-              recipe={recipe}
-              // chefName={recipe.chef_name}
-              // title={recipe.recipe_name}
-              // photo={recipe.recipe_photo}
+              id={recipe.id}
+              chefName={recipe.chef_name}
+              title={recipe.recipe_name}
+              photo={recipe.recipe_photo}
             />
           );
         })
@@ -113,11 +110,4 @@ function Recipes(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    recipes: state.recipes.recipes,
-    error: state.error
-  };
-};
-
-export default connect(mapStateToProps, { getRecipes })(Recipes);
+export default Recipes;
